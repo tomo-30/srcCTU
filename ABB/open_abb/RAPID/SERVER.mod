@@ -149,7 +149,7 @@ ENDPROC
 !////////////////////////
 !//SERVER: Main procedure
 !////////////////////////
-PROC main()
+PROC server_entry()
     !//Local variables
     VAR string receivedString;   !//Received string
     VAR string sendString;       !//Reply string
@@ -272,6 +272,11 @@ PROC main()
                     currentTool.tframe.rot.q2:=params{5};
                     currentTool.tframe.rot.q3:=params{6};
                     currentTool.tframe.rot.q4:=params{7};
+
+                    ! ★追加：COMMONへも反映
+                    SetToolFrame(currentTool.tframe.trans.x, currentTool.tframe.trans.y, currentTool.tframe.trans.z, 
+                                 currentTool.tframe.rot.q1, currentTool.tframe.rot.q2, currentTool.tframe.rot.q3, currentTool.tframe.rot.q4);
+
                     ok := SERVER_OK;
 		    frameMutex:= FALSE;
                 ELSE
@@ -287,6 +292,11 @@ PROC main()
                     currentWobj.oframe.rot.q2:=params{5};
                     currentWobj.oframe.rot.q3:=params{6};
                     currentWobj.oframe.rot.q4:=params{7};
+
+                    ! ★追加：COMMONへも反映
+                    SetWobjFrame(currentWobj.oframe.trans.x, currentWobj.oframe.trans.y, currentWobj.oframe.trans.z,
+                                 currentWobj.oframe.rot.q1, currentWobj.oframe.rot.q2, currentWobj.oframe.rot.q3, currentWobj.oframe.rot.q4);
+
                     ok := SERVER_OK;
                 ELSE
                     ok:=SERVER_BAD_MSG;
@@ -298,10 +308,18 @@ PROC main()
                     currentSpeed.v_ori:=params{2};
                     currentSpeed.v_leax:=params{3};
                     currentSpeed.v_reax:=params{4};
+
+                    ! ★追加
+                    gVtcp := currentSpeed;
+
                     ok := SERVER_OK;
                 ELSEIF nParams = 2 THEN
 					currentSpeed.v_tcp:=params{1};
 					currentSpeed.v_ori:=params{2};
+
+                    ! ★追加
+                    gVtcp := currentSpeed;
+
 					ok := SERVER_OK;
 				ELSE
                     ok:=SERVER_BAD_MSG;
@@ -320,10 +338,52 @@ PROC main()
                         currentZone.pzone_ori := params{3};
                         currentZone.zone_ori := params{4};
                     ENDIF
+
+                    ! ★追加
+                    gZone := currentZone;
+
                     ok := SERVER_OK;
                 ELSE
                     ok:=SERVER_BAD_MSG;
                 ENDIF
+
+            CASE 10: ! GOTO (非ブロッキング直線移動の投入)
+                ! 期待: "10 x y z qx qy qz qw #"
+                IF nParams = 7 THEN
+                    gTarget := [[params{1},params{2},params{3}],
+                                [params{4},params{5},params{6},params{7}],
+                                [0,0,0,0],
+                                externalAxis];
+                    gNewTarget := TRUE;   ! MOTIONタスクが検知してMoveL実行
+                    ok := SERVER_OK;
+                ELSE
+                    ok := SERVER_BAD_MSG;
+                ENDIF
+
+            CASE 11: ! GETPOSE (移動中でも現在TCPを返す：COMMONのTool/WObj基準)
+                IF nParams = 0 THEN
+                    VAR robtarget prt;
+                    prt := CRobT(\Tool:=gTool \WObj:=gWobj);
+                    addString := NumToStr(prt.trans.x,2) + " ";
+                    addString := addString + NumToStr(prt.trans.y,2) + " ";
+                    addString := addString + NumToStr(prt.trans.z,2) + " ";
+                    addString := addString + NumToStr(prt.rot.q1,3) + " ";
+                    addString := addString + NumToStr(prt.rot.q2,3) + " ";
+                    addString := addString + NumToStr(prt.rot.q3,3) + " ";
+                    addString := addString + NumToStr(prt.rot.q4,3);
+                    ok := SERVER_OK;
+                ELSE
+                    ok := SERVER_BAD_MSG;
+                ENDIF
+
+            CASE 12: ! STOP (割り込み停止要求)
+                IF nParams = 0 THEN
+                    gStopReq := TRUE;     ! MOTIONタスクが StopMove; ClearPath; を実行
+                    ok := SERVER_OK;
+                ELSE
+                    ok := SERVER_BAD_MSG;
+                ENDIF
+
 
             CASE 30: !Add Cartesian Coordinates to buffer
                 IF nParams = 7 THEN
