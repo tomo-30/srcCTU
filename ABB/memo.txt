@@ -1,0 +1,2 @@
+1007
+NewGUI_move.pyが最新、明日はこれをpush_plan.jsonと組み合わせたい。

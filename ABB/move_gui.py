@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
-# gui_move_tcp_openabb_queue_latest.py
+# move_gui_segmented.py
 # 目的:
-#   open_abb (CASE 0/1/3/6/7/8/9) を用い，
-#   GUIからTCP目標(x,y,z,roll,pitch,yaw)[mm/deg]を指定→MoveL．
-#   現在TCPは移動中も300ms周期で取得表示．
-#   送信中に新たな目標が来たら「最新1件だけをキュー」して前動作終了後に即MoveL．
+#   ・GUIでXYZRPY(mm/deg)の目標姿勢を入力し，MoveLで到達
+#   ・現在位置→目標位置を直線分割(経由点)して逐次MoveL
+#   ・各MoveLのACK待ち(受信)だけタイムアウト60秒に延長（A案）
+#   ・停止ボタンで分割間に安全に停止できるようにする
 #
-# 変更点:
-#   ・logging/tracebackでターミナルへ詳細ログ出力（INFO/ERROR）
-#   ・最新目標キュー(pending_target)機構を追加
-#   ・in_motionフラグで送信の直列化，ステータス可視化
-#
-# 実行: python gui_move_tcp_openabb_queue_latest.py
+# 前提: open_abb SERVER（CASE 0/1/3/6/7/8/9対応）が動作
 
 import socket
 import time
@@ -19,45 +14,38 @@ import math
 import threading
 import tkinter as tk
 from tkinter import ttk, messagebox
-import logging, traceback
 
-# ===== ロギング設定 =====
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
-log = logging.getLogger("openabb_gui")
+# ====== 接続先 ======
+ROBOT_IP, ROBOT_PORT = "192.168.125.1", 5000
 
-# ====== 通信先設定 ======
-ROBOT_IP, ROBOT_PORT = "192.168.125.1", 5000  # 必要に応じて変更
-
-# ====== Tool設定（フランジ→TCP）: mm/deg ======
-TOOL_TX, TOOL_TY, TOOL_TZ = 0.0, 0.0, 0.0
-TOOL_R_DEG, TOOL_P_DEG, TOOL_Y_DEG = 0.0, 0.0, 0.0  # ZYX順
-
-# ====== WObj設定（ベース→WObj）: mm/deg ======
+# ====== 既定パラメータ（必要最小限） ======
+# Tool / WObj は単位姿勢（ツール先＝フランジ，WObj＝ベース）
+TOOL_TXYZ = (0.0, 0.0, 0.0)
+TOOL_RPY  = (0.0, 0.0, 0.0)
 IDENTITY_WOBJ = True
-WOBJ_WX,  WOBJ_WY,  WOBJ_WZ  = 0.0, 0.0, 0.0
-WOBJ_R_DEG, WOBJ_P_DEG, WOBJ_Y_DEG = 0.0, 0.0, 0.0  # ZYX順
+WOBJ_TXYZ = (0.0, 0.0, 0.0)
+WOBJ_RPY  = (0.0, 0.0, 0.0)
 
-# ====== 速度・ゾーン ======
+# 速度・ゾーン（必要最低限）
 V_TCP, V_ORI = 50, 50
 P_TCP, P_ORI, Z_ORI = 10, 10, 10
 
-# ====== モニタ更新周期(ms) ======
-MONITOR_PERIOD_MS = 300
+# 分割ステップ長（mm）。GUIを最小に保つため固定値にしています
+STEP_MM = 60.0
 
-# ====== 目標初期値 ======
-INIT_TARGET = [350.0, 0.0, 300.0, 0.0, 180.0, 0.0]  # x,y,z, r,p,y
+# MoveL のみACK待ちを長めに（A案）
+MOVEL_ACK_TIMEOUT_SEC = 60.0
 
+# ソケット共通の短いタイムアウト（PingやGet、Set系）
+DEFAULT_RECV_TIMEOUT = 3.0
 
-# ========== 数学ユーティリティ ==========
-def fmt(n):
+# ------------------------------------------------------------
+
+def fmt(n): 
     return str(n) if isinstance(n, int) else f"{float(n):.6f}"
 
-def rpy_deg_to_quat(r_deg, p_deg, y_deg):
-    """ZYX順RPY[deg] → クォータニオン[ABB順: qx,qy,qz,qw]"""
-    rx, ry, rz = map(math.radians, (r_deg, p_deg, y_deg))
+def rpy_deg_to_quat(r, p, y):
+    rx, ry, rz = map(math.radians, (r, p, y))
     cx, sx = math.cos(rx/2), math.sin(rx/2)
     cy, sy = math.cos(ry/2), math.sin(ry/2)
     cz, sz = math.cos(rz/2), math.sin(rz/2)
@@ -66,289 +54,208 @@ def rpy_deg_to_quat(r_deg, p_deg, y_deg):
     qy = cz*sy*cx + sz*cy*sx
     qz = sz*cy*cx - cz*sy*sx
     n = math.sqrt(qw*qw + qx*qx + qy*qy + qz*qz) or 1.0
-    return [qx/n, qy/n, qz/n, qw/n]
+    return [qx/n, qy/n, qz/n, qw/n]  # ABB順: qx,qy,qz,qw
 
-def quat_to_rpy_deg(qx, qy, qz, qw):
-    """クォータニオン → ZYX順RPY[deg]"""
-    R11 = 1 - 2*(qy*qy + qz*qz)
-    R21 = 2*(qx*qy + qz*qw)
-    R31 = 2*(qx*qz - qy*qw)
-    R32 = 2*(qy*qz + qx*qw)
-    R33 = 1 - 2*(qx*qx + qy*qy)
-    yaw  = math.degrees(math.atan2(R21, R11))
-    pitch = math.degrees(math.asin(-R31))
-    roll = math.degrees(math.atan2(R32, R33))
-    return roll, pitch, yaw
-
-
-# ========== open_abb クライアント ==========
-class OpenABBRobotClient:
-    def __init__(self, ip, port):
-        self.ip = ip
+class RobotClient:
+    def __init__(self, host, port):
+        self.host = host
         self.port = port
         self.sock = None
-        self.lock = threading.Lock()
 
     def connect(self, timeout=5.0):
-        self.close()
-        log.info(f"Connecting {self.ip}:{self.port}")
-        s = socket.create_connection((self.ip, self.port), timeout=timeout)
-        s.settimeout(3.0)
-        self.sock = s
-        log.info("Connected")
+        self.sock = socket.create_connection((self.host, self.port), timeout=timeout)
+        self.sock.settimeout(DEFAULT_RECV_TIMEOUT)
+        print(f"[INFO] Connected {self.host}:{self.port}")
 
     def close(self):
-        if self.sock:
-            try:
+        try:
+            if self.sock:
                 self.sock.close()
-            except Exception:
-                pass
+        finally:
             self.sock = None
 
-    def _send_cmd(self, parts, pause=0.18, expect=None):
+    def _send_and_recv(self, parts, recv_timeout=None, expect=None, pause=0.15):
         if not self.sock:
-            raise RuntimeError("Not connected")
+            raise RuntimeError("Socket not connected")
+
         msg = " ".join(fmt(p) for p in parts) + " #"
-        with self.lock:
-            self.sock.sendall(msg.encode("ascii"))
-            time.sleep(pause)
-            data = self.sock.recv(2048).decode("ascii", errors="ignore").strip()
-        log.info(f"SEND: {msg.strip()}   RECV: {data}")
+        self.sock.sendall(msg.encode("ascii"))
+        time.sleep(pause)
+
+        old_to = self.sock.gettimeout()
+        if recv_timeout is not None:
+            self.sock.settimeout(recv_timeout)
+        try:
+            data = self.sock.recv(4096).decode("ascii", errors="ignore").strip()
+        finally:
+            if recv_timeout is not None:
+                self.sock.settimeout(old_to)
+
+        print(f"[SEND] {msg.strip()}   [RECV] {data}")
         toks = data.split()
-        instr = int(toks[0]) if len(toks)>=1 and toks[0].lstrip("-").isdigit() else None
-        ok    = int(toks[1]) if len(toks)>=2 and toks[1].lstrip("-").isdigit() else None
+        instr = int(toks[0]) if len(toks) >= 1 and toks[0].lstrip("-").isdigit() else None
+        ok    = int(toks[1]) if len(toks) >= 2 and toks[1].lstrip("-").isdigit() else None
         if expect is not None and instr != expect:
-            raise RuntimeError(f"ACK mismatch: expect {expect}, got {instr}, raw='{data}'")
+            raise RuntimeError(f"ACK instr mismatch: expected {expect}, got {instr}, raw='{data}'")
         return instr, ok, toks
 
-    @staticmethod
-    def _parse_case3_tokens(toks):
-        # 期待: "3 1 x y z qx qy qz qw"
-        if len(toks) >= 9:
-            return (float(toks[2]), float(toks[3]), float(toks[4]),
-                    float(toks[5]), float(toks[6]), float(toks[7]), float(toks[8]))
-        raise ValueError("CASE3 reply too short")
-
+    # --- open_abb CASE wrappers ---
     def ping(self):
-        return self._send_cmd([0], expect=0)
+        return self._send_and_recv([0], expect=0)
 
-    def set_wobj(self, identity=True, wx=0, wy=0, wz=0, r=0, p=0, y=0):
+    def set_tool(self, txyz, rpy_deg):
+        tq = rpy_deg_to_quat(*rpy_deg)
+        return self._send_and_recv([6, *txyz, *tq], expect=6)
+
+    def set_wobj(self, identity=True, txyz=(0,0,0), rpy_deg=(0,0,0)):
         if identity:
-            # 単位姿勢（open_abb仕様）: [qx,qy,qz,qw] = [1,0,0,0]
-            wqx, wqy, wqz, wqw = 1.0, 0.0, 0.0, 0.0
-            return self._send_cmd([7, 0.0, 0.0, 0.0, wqx, wqy, wqz, wqw], expect=7)
+            # ABBの単位クォータニオン（[1,0,0,0]ではなく順番は[qx,qy,qz,qw]なので [1,0,0,0]→(qx=1)に注意）
+            # ここではベース＝作業物座標の想定として，ABBサーバ実装側が解釈する「単位姿勢」に倣って [1,0,0,0] を送る
+            return self._send_and_recv([7, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0], expect=7)
         else:
-            wqx, wqy, wqz, wqw = rpy_deg_to_quat(r, p, y)
-            return self._send_cmd([7, wx, wy, wz, wqx, wqy, wqz, wqw], expect=7)
+            wq = rpy_deg_to_quat(*rpy_deg)
+            return self._send_and_recv([7, *txyz, *wq], expect=7)
 
-    def set_tool(self, tx, ty, tz, r, p, y):
-        tqx, tqy, tqz, tqw = rpy_deg_to_quat(r, p, y)
-        return self._send_cmd([6, tx, ty, tz, tqx, tqy, tqz, tqw], expect=6)
+    def set_speed(self, v_tcp, v_ori):
+        return self._send_and_recv([8, v_tcp, v_ori], expect=8)
 
-    def set_speed_zone(self, v_tcp, v_ori, p_tcp, p_ori, z_ori):
-        self._send_cmd([8, v_tcp, v_ori], expect=8)
-        return self._send_cmd([9, 0, p_tcp, p_ori, z_ori], expect=9)
+    def set_zone(self, p_tcp, p_ori, z_ori):
+        return self._send_and_recv([9, 0, p_tcp, p_ori, z_ori], expect=9)
 
-    def get_tcp(self):
-        instr, ok, toks = self._send_cmd([3], expect=3)
-        if ok == 1:
-            x,y,z,qx,qy,qz,qw = self._parse_case3_tokens(toks)
-            return True, (x,y,z,qx,qy,qz,qw)
-        return False, None
+    def get_cart(self):
+        instr, ok, toks = self._send_and_recv([3], expect=3)
+        if ok != 1 or len(toks) < 9:
+            raise RuntimeError("CASE3 reply invalid")
+        x = float(toks[2]); y = float(toks[3]); z = float(toks[4])
+        qx = float(toks[5]); qy = float(toks[6]); qz = float(toks[7]); qw = float(toks[8])
+        return (x, y, z, qx, qy, qz, qw)
 
-    def movel_xyzrpy(self, x, y, z, r, p, yw):
-        qx, qy, qz, qw = rpy_deg_to_quat(r, p, yw)
-        instr, ok, _ = self._send_cmd([1, x, y, z, qx, qy, qz, qw], expect=1)
-        return ok == 1
+    def moveL(self, x, y, z, rpy_deg, ack_timeout=MOVEL_ACK_TIMEOUT_SEC):
+        qx, qy, qz, qw = rpy_deg_to_quat(*rpy_deg)
+        # MoveLのACK待ちだけ，長めのタイムアウトに切り替え（A案）
+        return self._send_and_recv([1, x, y, z, qx, qy, qz, qw],
+                                   recv_timeout=ack_timeout, expect=1)
 
+# 経由点生成（現在→目標の直線をSTEP_MMごとに割る，最後は厳密に目標）
+def make_via_points_xyz(curr_xyz, target_xyz, step_mm=STEP_MM):
+    cx, cy, cz = curr_xyz
+    tx, ty, tz = target_xyz
+    dx, dy, dz = tx - cx, ty - cy, tz - cz
+    dist = math.sqrt(dx*dx + dy*dy + dz*dz)
+    if dist <= 1e-6:
+        return [target_xyz]  # ほぼ同一点
+    n_seg = max(1, int(dist // step_mm))
+    via = []
+    for i in range(1, n_seg + 1):
+        s = i / n_seg
+        via.append((cx + dx*s, cy + dy*s, cz + dz*s))
+    # 念のため終点は厳密に目標
+    via[-1] = (tx, ty, tz)
+    return via
 
-# ========== GUI ==========
+# ============================================================
+# GUI
+# ============================================================
+
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("ABB IRB1200 TCP GUI (open_abb) - queue latest target")
-        self.geometry("540x300")
-        self.resizable(False, False)
+        self.title("open_abb MoveL (segmented)")
+        self.geometry("420x260")
 
-        self.client = OpenABBRobotClient(ROBOT_IP, ROBOT_PORT)
-        self.connected = False
+        self.client = RobotClient(ROBOT_IP, ROBOT_PORT)
+        self.stop_flag = threading.Event()
+        self.motion_thread = None
 
-        # 動作制御
-        self.in_motion = False
-        self.pending_target = None
-        self.state_lock = threading.Lock()
+        # --- 上段：目標入力 ---
+        frm = ttk.Frame(self); frm.pack(padx=10, pady=10, fill="x")
 
-        self._build_widgets()
-        # 起動時に接続・初期化
-        threading.Thread(target=self._init_robot, daemon=True).start()
-        # モニタ更新開始
-        self.after(MONITOR_PERIOD_MS, self._poll_tcp)
+        self.vars = {}
+        labels = ["X(mm)","Y(mm)","Z(mm)","Roll(deg)","Pitch(deg)","Yaw(deg)"]
+        defaults = [400.0, 0.0, 400.0, 180.0, 0.0, 180.0]
+        for i,(lab,defv) in enumerate(zip(labels, defaults)):
+            ttk.Label(frm, text=lab, width=10).grid(row=i//3, column=(i%3)*2, sticky="e", padx=4, pady=4)
+            v = tk.StringVar(value=str(defv)); self.vars[lab]=v
+            ttk.Entry(frm, textvariable=v, width=10).grid(row=i//3, column=(i%3)*2+1, sticky="w")
 
-    def _build_widgets(self):
-        pad = {'padx': 8, 'pady': 5}
+        # --- 下段：ボタン ---
+        btns = ttk.Frame(self); btns.pack(padx=10, pady=10, fill="x")
+        ttk.Button(btns, text="移動開始", command=self.on_start).pack(side="left", padx=6)
+        ttk.Button(btns, text="停止", command=self.on_stop).pack(side="left", padx=6)
 
-        self.lbl_status = ttk.Label(self, text="Status: connecting...", foreground="blue")
-        self.lbl_status.grid(row=0, column=0, columnspan=6, sticky="w", **pad)
+        # 自動接続と初期セット
+        self.after(100, self._auto_connect_and_init)
 
-        ttk.Label(self, text="Current TCP [mm/deg]").grid(row=1, column=0, columnspan=6, sticky="w", **pad)
-
-        self.cur_vars = [tk.StringVar(value="---") for _ in range(6)]
-        labels = ["x","y","z","roll","pitch","yaw"]
-        for i, name in enumerate(labels):
-            ttk.Label(self, text=f"{name}:").grid(row=2 + i//3, column=(i%3)*2+0, sticky="e", **pad)
-            ttk.Label(self, textvariable=self.cur_vars[i], width=12).grid(row=2 + i//3, column=(i%3)*2+1, sticky="w", **pad)
-
-        ttk.Label(self, text="Target XYZRPY [mm/deg]").grid(row=4, column=0, columnspan=6, sticky="w", **pad)
-
-        self.ent_vars = []
-        defaults = INIT_TARGET
-        for i, name in enumerate(labels):
-            ttk.Label(self, text=f"{name}:").grid(row=5 + i//3, column=(i%3)*2+0, sticky="e", **pad)
-            var = tk.StringVar(value=str(defaults[i]))
-            ent = ttk.Entry(self, textvariable=var, width=12)
-            ent.grid(row=5 + i//3, column=(i%3)*2+1, sticky="w", **pad)
-            self.ent_vars.append(var)
-
-        self.btn_send = ttk.Button(self, text="Send MoveL", command=self._on_send)
-        self.btn_send.grid(row=7, column=0, columnspan=6, **pad)
-
-    # --- ロボット初期化 ---
-    def _init_robot(self):
+    def _auto_connect_and_init(self):
         try:
-            self._set_status("connecting...", "blue")
-            self.client.connect(timeout=5.0)
-            self._set_status("connected", "green")
-
-            self.client.ping()
-            self.client.set_wobj(
-                identity=IDENTITY_WOBJ,
-                wx=WOBJ_WX, wy=WOBJ_WY, wz=WOBJ_WZ,
-                r=WOBJ_R_DEG, p=WOBJ_P_DEG, y=WOBJ_Y_DEG
-            )
-            self.client.set_tool(TOOL_TX, TOOL_TY, TOOL_TZ, TOOL_R_DEG, TOOL_P_DEG, TOOL_Y_DEG)
-            self.client.set_speed_zone(V_TCP, V_ORI, P_TCP, P_ORI, Z_ORI)
-            self.connected = True
-            log.info("Robot init done")
-        except Exception as e:
-            self._set_status(f"connect/init failed: {e}", "red")
-            log.error("Init failed:\n" + traceback.format_exc())
-            self.connected = False
-
-    def _set_status(self, text, color):
-        def _upd():
-            self.lbl_status.config(text=f"Status: {text}", foreground=color)
-        self.after(0, _upd)
-
-    # --- モニタ周期（移動中も更新） ---
-    def _poll_tcp(self):
-        if self.connected:
-            try:
-                ok, tcp = self.client.get_tcp()
-                if ok:
-                    x,y,z,qx,qy,qz,qw = tcp
-                    r,p,yw = quat_to_rpy_deg(qx,qy,qz,qw)
-                    vals = [x,y,z,r,p,yw]
-                    for i,v in enumerate(vals):
-                        self.cur_vars[i].set(f"{v:.3f}")
-                else:
-                    self._set_status("get_tcp NG", "orange")
-                    log.warning("get_tcp returned NG")
-            except Exception as e:
-                self._set_status(f"poll error: {e}", "red")
-                log.error("Poll error:\n" + traceback.format_exc())
-                threading.Thread(target=self._reconnect, daemon=True).start()
-        self.after(MONITOR_PERIOD_MS, self._poll_tcp)
-
-    def _reconnect(self):
-        with self.state_lock:
-            self.connected = False
-        try:
-            self._set_status("reconnecting...", "blue")
-            self.client.close()
+            print("[INFO] Connecting...")
             self.client.connect(timeout=5.0)
             self.client.ping()
-            self.client.set_wobj(
-                identity=IDENTITY_WOBJ,
-                wx=WOBJ_WX, wy=WOBJ_WY, wz=WOBJ_WZ,
-                r=WOBJ_R_DEG, p=WOBJ_P_DEG, y=WOBJ_Y_DEG
-            )
-            self.client.set_tool(TOOL_TX, TOOL_TY, TOOL_TZ, TOOL_R_DEG, TOOL_P_DEG, TOOL_Y_DEG)
-            self.client.set_speed_zone(V_TCP, V_ORI, P_TCP, P_ORI, Z_ORI)
-            self._set_status("connected", "green")
-            with self.state_lock:
-                self.connected = True
-            log.info("Reconnected")
+            # Tool / WObj / Speed / Zone
+            self.client.set_wobj(identity=IDENTITY_WOBJ, txyz=WOBJ_TXYZ, rpy_deg=WOBJ_RPY)
+            self.client.set_tool(TOOL_TXYZ, TOOL_RPY)
+            self.client.set_speed(V_TCP, V_ORI)
+            self.client.set_zone(P_TCP, P_ORI, Z_ORI)
+            messagebox.showinfo("接続", "ロボットに接続しました。")
         except Exception as e:
-            self._set_status(f"reconnect failed: {e}", "red")
-            log.error("Reconnect failed:\n" + traceback.format_exc())
+            messagebox.showerror("接続エラー", f"{e}")
 
-    # --- 送信ボタン ---
-    def _on_send(self):
-        if not self.connected:
-            messagebox.showerror("Error", "Not connected to robot.")
+    def on_start(self):
+        if self.motion_thread and self.motion_thread.is_alive():
+            messagebox.showwarning("実行中", "既に移動中です。停止してから再度実行してください。")
             return
         try:
-            tgt = [float(v.get()) for v in self.ent_vars]  # x y z r p y
-            x,y,z,r,p,yw = tgt
+            x = float(self.vars["X(mm)"].get())
+            y = float(self.vars["Y(mm)"].get())
+            z = float(self.vars["Z(mm)"].get())
+            r = float(self.vars["Roll(deg)"].get())
+            p = float(self.vars["Pitch(deg)"].get())
+            yaw = float(self.vars["Yaw(deg)"].get())
         except ValueError:
-            messagebox.showerror("Error", "Invalid numeric input.")
+            messagebox.showerror("入力エラー", "数値を入力してください。")
             return
 
-        with self.state_lock:
-            if self.in_motion:
-                # 最新1件だけ保持（上書き）
-                self.pending_target = (x,y,z,r,p,yw)
-                self._set_status("queued latest target", "orange")
-                log.info(f"Target queued (latest only): {self.pending_target}")
-                return
-            # すぐ送る
-            self.in_motion = True
+        self.stop_flag.clear()
+        self.motion_thread = threading.Thread(
+            target=self._run_motion, args=((x,y,z),(r,p,yaw)), daemon=True
+        )
+        self.motion_thread.start()
 
-        threading.Thread(target=self._do_movel_and_check_queue, args=((x,y,z,r,p,yw),), daemon=True).start()
+    def on_stop(self):
+        self.stop_flag.set()
 
-    def _do_movel_and_check_queue(self, target):
+    def _run_motion(self, target_xyz, target_rpy):
         try:
-            x,y,z,r,p,yw = target
-            self._set_status("MoveL sending...", "blue")
-            log.info(f"MoveL start to: {target}")
-            ok = self.client.movel_xyzrpy(x,y,z,r,p,yw)
-            if ok:
-                self._set_status("MoveL ack OK", "green")
-                log.info("MoveL ack OK")
-            else:
-                self._set_status("MoveL ack != 1", "orange")
-                log.warning("MoveL ack != 1")
+            # 現在TCP取得
+            cx, cy, cz, cqx, cqy, cqz, cqw = self.client.get_cart()
+            print(f"[CURR] ({cx:.3f},{cy:.3f},{cz:.3f})")
 
-            # ちょい待って到達誤差確認
-            time.sleep(0.5)
-            ok_tcp, tcp = self.client.get_tcp()
-            if ok_tcp:
-                mx,my,mz,mqx,mqy,mqz,mqw = tcp
-                pos_err = math.sqrt((mx-x)**2+(my-y)**2+(mz-z)**2)
-                self._set_status(f"pos_err={pos_err:.2f} mm", "green")
-                log.info(f"Reached? pos_err={pos_err:.3f} mm")
+            # 経由点列を作成（姿勢は固定：target_rpy）
+            via_xyz = make_via_points_xyz((cx,cy,cz), target_xyz, STEP_MM)
+
+            # 経由点ごとに MoveL（ACKは最大60秒待ち：A案）
+            for i,(vx,vy,vz) in enumerate(via_xyz, start=1):
+                if self.stop_flag.is_set():
+                    print("[INFO] Stopped before sending next segment.")
+                    break
+                print(f"[INFO] Segment {i}/{len(via_xyz)} -> ({vx:.2f},{vy:.2f},{vz:.2f})")
+                # 送信＆ACK待ち（60秒）
+                self.client.moveL(vx, vy, vz, target_rpy, ack_timeout=MOVEL_ACK_TIMEOUT_SEC)
+                # 経由点到達後に停止要求を再確認
+                if self.stop_flag.is_set():
+                    print("[INFO] Stopped after segment reach.")
+                    break
+
+            print("[INFO] Motion sequence done.")
         except Exception as e:
-            self._set_status(f"MoveL error: {e}", "red")
-            log.error("MoveL error:\n" + traceback.format_exc())
-        finally:
-            # ここで最新キューを確認し，あれば直ちに送る
-            next_target = None
-            with self.state_lock:
-                if self.pending_target is not None:
-                    next_target = self.pending_target
-                    self.pending_target = None
-                    log.info(f"Dequeued latest target: {next_target}")
-                else:
-                    self.in_motion = False
+            messagebox.showerror("移動エラー", f"{e}")
 
-            if next_target is not None:
-                # 次の送信を続行（in_motionは継続trueのまま）
-                self._do_movel_and_check_queue(next_target)
-            else:
-                # 完全にアイドルへ
-                with self.state_lock:
-                    self.in_motion = False
-
+    def destroy(self):
+        try:
+            self.client.close()
+        except:
+            pass
+        super().destroy()
 
 if __name__ == "__main__":
     app = App()
