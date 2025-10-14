@@ -58,6 +58,124 @@ DEFAULT_PAUSE_AFTER_EVENT_SEC = 1.0
 PUSH_PLAN_PATH = os.path.join(BASE_DIR, "info", "push_plan.json")
 LOG_DIR        = os.path.join(BASE_DIR, "log")
 
+# --- GUIメッセージをターミナルにも出すラッパ ---
+def gui_info(title: str, msg: str):
+    print(f"[INFO][{title}] {msg}")
+    try:
+        messagebox.showinfo(title, msg)
+    except Exception:
+        pass
+
+def gui_warn(title: str, msg: str):
+    print(f"[WARN][{title}] {msg}")
+    try:
+        messagebox.showwarning(title, msg)
+    except Exception:
+        pass
+
+def gui_error(title: str, msg: str):
+    print(f"[ERROR][{title}] {msg}")
+    try:
+        messagebox.showerror(title, msg)
+    except Exception:
+        pass
+# --- 追加：パース＋クランプ＋デバッグ ---
+# ==== sanitize shim (drop-in) ====
+import inspect
+
+def _parse_float_guard5(s, default, lo, hi, name="value"):
+    """
+    GUI文字列 s を float に変換。失敗時は default。
+    lo..hi にクランプして返す。デバッグ出力付き。
+    """
+    try:
+        txt = str(s).strip().replace(",", "")
+        txt = txt.translate(str.maketrans("．，－＋", ".-,+"))
+        v = float(txt)
+    except Exception:
+        v = float(default)
+        print(f"[DEBUG] parse fail for {name}='{s}', use default={v}")
+    if v < lo:
+        print(f"[DEBUG] clamp {name}: {v} -> {lo}")
+        v = lo
+    if v > hi:
+        print(f"[DEBUG] clamp {name}: {v} -> {hi}")
+        v = hi
+    return v
+
+# 互換ラッパ：4引数/5引数どちらの呼び出しでも受け付ける
+def _parse_float_guard(*args, **kwargs):
+    if len(args) == 4 and not kwargs:
+        s, default, lo, hi = args
+        return _parse_float_guard5(s, default, lo, hi, name="compat")
+    return _parse_float_guard5(*args, **kwargs)
+
+def _sanitize_zone_values(p_tcp_str, p_ori_str, z_ori_str):
+    """
+    Zone 入力を実用範囲に丸める（安全域：P_TCP 0.1..50、角度 0.1..100）
+    """
+    p_tcp = _parse_float_guard(p_tcp_str, 1.5, 0.1, 50.0,  "P_TCP")
+    p_ori = _parse_float_guard(p_ori_str, 8.0, 0.1, 100.0, "P_ORI")
+    z_ori = _parse_float_guard(z_ori_str, 8.0, 0.1, 100.0, "Z_ORI")
+    print(f"[DEBUG] ZONE sanitized -> p_tcp={p_tcp}, p_ori={p_ori}, z_ori={z_ori}")
+    return p_tcp, p_ori, z_ori
+
+print(f"[DEBUG] installed _parse_float_guard shim; signature={inspect.signature(_parse_float_guard)}")
+# ==== end sanitize shim ====
+
+
+
+# === 差分送信用（新規追加） ==============================================
+# === 差分送信用（置き換え版） ==============================================
+class ZoneSpeedCache:
+    """
+    set_speed/set_zone を '値が変わる時だけ' 実行。
+    さらに set_zone は MoveL 直後の遅延ACK(1 1 ...)に強いリトライ付き。
+    """
+    def __init__(self, client):
+        self.c = client
+        self._last_speed = None   # (v_tcp, v_ori)
+        self._last_zone  = None   # (p_tcp, p_ori, z_ori)
+
+    def set_speed_if_changed(self, v_tcp, v_ori):
+        cur = (float(v_tcp), float(v_ori))
+        if self._last_speed != cur:
+            print(f"[DEBUG] ZoneSpeedCache.set_speed({cur})")
+            self.c.set_speed(v_tcp, v_ori)
+            self._last_speed = cur
+
+    def set_zone_if_changed(self, p_tcp, p_ori, z_ori, *, force: bool=False, context: str=""):
+        """
+        force=True ならキャッシュ無視で必ず送る。
+        送信前に小待ち→flush、失敗時は ping→flush→再送。
+        """
+        cur = (float(p_tcp), float(p_ori), float(z_ori))
+        if (not force) and (self._last_zone == cur):
+            return
+
+        def _try_once(tag):
+            # 直前MoveLの遅延ACKを吐かせる小待ち＋flush
+            time.sleep(0.03)
+            self.c.flush_recv()
+            print(f"[DEBUG] ZoneSpeedCache.set_zone{tag} -> {cur} {('['+context+']') if context else ''}")
+            self.c.set_zone(p_tcp, p_ori, z_ori)
+
+        try:
+            _try_once("(1st)")
+        except RecoverableCommError as e:
+            # 典型: last_raw が "1 1 0 0" で 9 が来ずにタイムアウト
+            print(f"[WARN] set_zone first attempt failed: {e}. retry with ping+flush")
+            try:
+                self.c.ping()
+            except Exception:
+                pass
+            time.sleep(0.03)
+            self.c.flush_recv()
+            _try_once("(2nd)")
+
+        self._last_zone = cur
+# =======================================================================
+
 
 # ---- 角度変換 ----
 def rpy_deg_to_quat(r, p, y):
@@ -116,6 +234,114 @@ def load_plan_sequence(json_path):
         seq.append((f"B{_id}", (Bx,By,Bz,Br,Bp,Byaw), _id))
         seq.append((f"A{_id}", (Ax,Ay,Az,Ar,Ap,Ayaw), _id))
     return seq
+
+
+# --- main.py にコピペ（import の下あたり） -------------------------------
+from dataclasses import dataclass
+from typing import List, Tuple, Optional, Callable
+
+@dataclass
+class PoseRPY:
+    x: float; y: float; z: float
+    roll: float; pitch: float; yaw: float
+
+def _almost_equal_pose(p1: PoseRPY, p2: PoseRPY, pos_eps=0.05, ang_eps_deg=0.3) -> bool:
+    return (abs(p1.x - p2.x) <= pos_eps and
+            abs(p1.y - p2.y) <= pos_eps and
+            abs(p1.z - p2.z) <= pos_eps and
+            abs(p1.roll - p2.roll) <= ang_eps_deg and
+            abs(p1.pitch - p2.pitch) <= ang_eps_deg and
+            abs(p1.yaw - p2.yaw) <= ang_eps_deg)
+
+class PipelineMover:
+    """
+    ・Speed/Zoneは差分送信
+    ・MoveLはウィンドウ方式（先行 send_only、末尾のみ ACK）
+    ・最終点直前だけ Zone を停止寄りに切替
+    ・途中中断したい時は check_abort() を渡す（Trueで即中断）
+    """
+    def __init__(self, client,
+                 zs_cache: ZoneSpeedCache,
+                 v_tcp: float = 40.0, v_ori: float = 80.0,
+                 zone_blend: Tuple[float,float,float] = (1.5, 8.0, 8.0),
+                 zone_stop:  Tuple[float,float,float] = (0.5, 8.0, 8.0),
+                 window: int = 3):
+        self.c = client
+        self.zs = zs_cache
+        self.v_tcp = float(v_tcp)
+        self.v_ori = float(v_ori)
+        self.zone_blend = tuple(float(x) for x in zone_blend)
+        self.zone_stop  = tuple(float(x) for x in zone_stop)
+        self.window = max(1, int(window))
+
+    def prelude(self, tool_txyz=(0,0,0), tool_rpy=(0,0,0), use_identity_wobj=True):
+        self.c.ping()
+        self.c.set_wobj(identity=use_identity_wobj)
+        self.c.set_tool(tool_txyz, tool_rpy)
+        self.zs.set_speed_if_changed(self.v_tcp, self.v_ori)
+        self.zs.set_zone_if_changed(*self.zone_blend)
+
+    def run(self, segments: List[PoseRPY], check_abort: Optional[Callable[[], bool]] = None):
+        # 連続同一点の除去
+        filtered: List[PoseRPY] = []
+        for seg in segments:
+            if not filtered or not _almost_equal_pose(seg, filtered[-1]):
+                filtered.append(seg)
+        segments = filtered
+
+        N = len(segments)
+        if N == 0:
+            print("[INFO] No segments."); return
+
+        # 先行投入
+        prefill = max(0, min(self.window - 1, N - 1))
+        for k in range(prefill):
+            if check_abort and check_abort(): return
+            s = segments[k]
+            self.c.moveL_send_only(s.x, s.y, s.z, (s.roll, s.pitch, s.yaw), tiny_pause=0.0)
+
+        i = prefill
+        while i < N:
+            if check_abort and check_abort(): return
+            s = segments[i]
+
+            # 最終点だけ停止寄り
+            if i == N - 1:
+                # ここを変更（force=True, context付き）
+                self.zs.set_zone_if_changed(*self.zone_stop, force=True, context="final-stop")
+            else:
+                self.zs.set_zone_if_changed(*self.zone_blend, context="blend")
+
+            # 末尾はACKで同期
+            self.c.moveL_ack(s.x, s.y, s.z, (s.roll, s.pitch, s.yaw))
+
+            # 次を補充
+            i += 1
+            if i < N:
+                if check_abort and check_abort(): return
+                n = segments[i]
+                self.c.moveL_send_only(n.x, n.y, n.z, (n.roll, n.pitch, n.yaw), tiny_pause=0.0)
+# =======================================================================
+
+# --- main.py にコピペ（上のクラスの直後など） --------------------------
+def plan_to_segments(plan_items, use_order=("A","B")) -> list[PoseRPY]:
+    """
+    plan_items: 例）[{ "id":1, "A":{"x":..,"y":..,"z":..,"roll":..,"pitch":..,"yaw":..},
+                          "B":{...}}, ...]
+    use_order: ("A","B") なら A→B→A→B… の順で抽出
+    """
+    segs: list[PoseRPY] = []
+    for item in plan_items:
+        for key in use_order:
+            p = item.get(key)
+            if not p: 
+                continue
+            segs.append(PoseRPY(
+                float(p["x"]), float(p["y"]), float(p["z"]),
+                float(p["roll"]), float(p["pitch"]), float(p["yaw"])
+            ))
+    return segs
+# -------------------------------------------------------------------------
 
 
 # ==== Arduinoシリアルモニタ ====
@@ -236,6 +462,8 @@ class App(tk.Tk):
 
         # ---- Robot client ----
         self.client = RobotClient(ROBOT_IP, ROBOT_PORT)
+        self.zs = ZoneSpeedCache(self.client)   # ★追加：差分送信キャッシュ
+
 
         # ---- 状態 ----
         self.sequence = []
@@ -543,16 +771,25 @@ class App(tk.Tk):
 
         # 速度/ゾーン適用
         try:
-            v_tcp = float(self.var_v_tcp.get())
-            v_ori = float(self.var_v_ori.get())
-            p_tcp = float(self.var_p_tcp.get())
-            p_ori = float(self.var_p_ori.get())
-            z_ori = float(self.var_z_ori.get())
-            self.client.set_speed(v_tcp, v_ori)
-            self.client.set_zone(p_tcp, p_ori, z_ori)
+            v_tcp = _parse_float_guard(self.var_v_tcp.get(), DEFAULT_V_TCP, 1.0, 1000.0, "V_TCP")
+            v_ori = _parse_float_guard(self.var_v_ori.get(), DEFAULT_V_ORI, 1.0, 1000.0, "V_ORI")
+            p_tcp, p_ori, z_ori = _sanitize_zone_values(self.var_p_tcp.get(),
+                                                        self.var_p_ori.get(),
+                                                        self.var_z_ori.get())
+            if hasattr(self, "zs"):  # ZoneSpeedCache がある場合
+                print(f"[DEBUG] set_speed_if_changed({v_tcp}, {v_ori})")
+                self.zs.set_speed_if_changed(v_tcp, v_ori)
+                print(f"[DEBUG] set_zone_if_changed({p_tcp}, {p_ori}, {z_ori})")
+                self.zs.set_zone_if_changed(p_tcp, p_ori, z_ori, context="startup")
+            else:
+                print(f"[DEBUG] set_speed({v_tcp}, {v_ori})")
+                self.client.set_speed(v_tcp, v_ori)
+                print(f"[DEBUG] set_zone({p_tcp}, {p_ori}, {z_ori})")
+                self.client.set_zone(p_tcp, p_ori, z_ori)
         except Exception as e:
-            messagebox.showerror("入力エラー", f"{e}")
+            gui_error("入力エラー", f"{e}")
             return
+
 
         self.pause_flag.clear()
         self.skip_flag.clear()
@@ -640,125 +877,111 @@ class App(tk.Tk):
     # === 目標実行（①②③＋同期保存＋自動再開） ===
     def _run_single_target_with_arduino(self, label: str, target_xyzrpy, target_id: int):
         """
-        - 実行中，Arduinoピンに対し条件②③を監視
-          → 成立：押し込み停止→待機→pins+XYZRPYの同期スナップショット→保存→A退避→Bスキップ→続行
-        - B到達(終点ACK完了)で条件①：押し込み停止→待機→同期スナップショット→保存→続行
-        - RecoverableCommError は自動再試行
+        ・経路分割→PipelineMoverでパイプライン実行
+        ・②③のピントリガ時は中断してログ→Aに退避→Bをスキップ扱い
+        ・B到達時は停止→待機→同期ログ
         """
-        while True:  # 自動リトライループ
-            try:
-                step_mm   = float(self.var_step_mm.get());   assert step_mm > 0
-                lookahead = int(float(self.var_lookahead.get())); assert lookahead >= 1
-                final_fine = bool(self.var_final_fine.get())
-                final_p_tcp= float(self.var_final_p.get())
-                pause_sec  = max(0.0, float(self.var_pause_sec.get()))
-                if final_fine and final_p_tcp <= 0:
-                    raise ValueError("終点P_TCPは正の値にしてください。")
+        # GUI値
+        step_mm   = float(self.var_step_mm.get());   assert step_mm > 0
+        lookahead = int(float(self.var_lookahead.get())); assert lookahead >= 1
+        final_fine = bool(self.var_final_fine.get())
+        final_p_tcp= float(self.var_final_p.get())
+        pause_sec  = max(0.0, float(self.var_pause_sec.get()))
+        if final_fine and final_p_tcp <= 0:
+            raise ValueError("終点P_TCPは正の値にしてください。")
+        thresh_any = float(self.var_thresh_any.get())
+        thresh_all = float(self.var_thresh_all.get())
 
-                thresh_any = float(self.var_thresh_any.get())
-                thresh_all = float(self.var_thresh_all.get())
+        # 退避先A（同じIDのA）
+        retreat_A_pose = None
+        for L,(ax,ay,az,ar,ap,ayw),id_ in self.sequence:
+            if id_ == target_id and L.startswith("A"):
+                retreat_A_pose = (ax,ay,az,ar,ap,ayw); break
 
-                # 姿勢スタート
-                self.client.flush_recv()
-                cx, cy, cz, *_ = self.client.get_cart()
+        # 現在位置（最初に1回だけ）
+        cx, cy, cz, *_ = self.client.get_cart()
+        tx, ty, tz, rr, pp, yw = target_xyzrpy
 
-                tx, ty, tz, rr, pp, yw = target_xyzrpy
-                via_xyz = make_via_points_by_step((cx,cy,cz), (tx,ty,tz), step_mm=step_mm)
-                n = len(via_xyz)
+        # 経路分割（XYZは分割、姿勢は一定）
+        via_xyz = make_via_points_by_step((cx,cy,cz), (tx,ty,tz), step_mm=step_mm)
+        segments = [PoseRPY(x,y,z, rr,pp,yw) for (x,y,z) in via_xyz]
 
-                self.client.start_ack_drain()
+        # パイプラインムーバをGUI値で初期化
+        v_tcp = _parse_float_guard(self.var_v_tcp.get(), DEFAULT_V_TCP, 1.0, 1000.0, "V_TCP")
+        v_ori = _parse_float_guard(self.var_v_ori.get(), DEFAULT_V_ORI, 1.0, 1000.0, "V_ORI")
+        p_tcp, p_ori, z_ori = _sanitize_zone_values(self.var_p_tcp.get(),
+                                                    self.var_p_ori.get(),
+                                                    self.var_z_ori.get())
+        final_p_tcp_safe = _parse_float_guard(final_p_tcp, 0.5, 0.1, 50.0, "FINAL_P_TCP")
 
-                if n == 1:
-                    # 終点のみ
-                    self.client.stop_ack_drain()
-                    self.client.flush_recv()
-                    self._move_final_with_optional_fine((tx,ty,tz), (rr,pp,yw), final_fine, final_p_tcp)
+        zone_blend = (p_tcp, p_ori, z_ori)
+        zone_stop  = ((final_p_tcp_safe if final_fine else p_tcp), p_ori, z_ori)
 
-                    # ① B到達 → 停止→待機→同期保存
-                    if label.startswith("B"):
-                        self._pause_wait_and_sync_log(event_type="arrived_B",
-                                                      target_label=label,
-                                                      target_pose=target_xyzrpy,
-                                                      pause_sec=pause_sec)
-                    return True
+        print(f"[DEBUG] Pipeline zones -> blend={zone_blend}, stop={zone_stop}")
+        print(f"[DEBUG] Pipeline speed -> v_tcp={v_tcp}, v_ori={v_ori}")
 
-                going_to_B = label.startswith("B")
-                # このIDのA姿勢を退避先として見つける
-                retreat_A_pose = None
-                for L,(ax,ay,az,ar,ap,ayw),id_ in self.sequence:
-                    if id_ == target_id and L.startswith("A"):
-                        retreat_A_pose = (ax,ay,az,ar,ap,ayw)
-                        break
 
-                # 先行投入
-                preload = min(lookahead, max(0, n-1))
-                idx_sent = -1
-                for k in range(preload):
-                    if self._check_pause_skip():
-                        self.client.stop_ack_drain(); self.client.flush_recv()
-                        return None if self.skip_flag.is_set() else False
-                    vx, vy, vz = via_xyz[k]
-                    self.client.moveL_send_only(vx, vy, vz, (rr,pp,yw))
-                    idx_sent = k
-                    # ②③チェック
-                    if going_to_B:
-                        trig, _pins = self._check_pin_triggers(thresh_any, thresh_all)
-                        if trig:
-                            self._handle_pin_trigger_during_B(label, target_xyzrpy, retreat_A_pose, pause_sec)
-                            return True  # Bスキップ扱い
 
-                # パイプ回し
-                while idx_sent < n-2:
-                    if self._check_pause_skip():
-                        self.client.stop_ack_drain(); self.client.flush_recv()
-                        return None if self.skip_flag.is_set() else False
-                    idx_sent += 1
-                    nxt = idx_sent
-                    if nxt < n-1:
-                        vx, vy, vz = via_xyz[nxt]
-                        self.client.moveL_send_only(vx, vy, vz, (rr,pp,yw))
-                    time.sleep(0.04)
-                    # ②③チェック
-                    if going_to_B:
-                        trig, _pins = self._check_pin_triggers(thresh_any, thresh_all)
-                        if trig:
-                            self._handle_pin_trigger_during_B(label, target_xyzrpy, retreat_A_pose, pause_sec)
-                            return True
+        mover = PipelineMover(
+            self.client, self.zs,
+            v_tcp=v_tcp, v_ori=v_ori,
+            zone_blend=zone_blend, zone_stop=zone_stop,
+            window=max(1, lookahead)
+        )
+        # 1回目だけの初期化は on_start 済みだが、安全に再適用（差分送信で無駄送信なし）
+        mover.prelude(tool_txyz=(0,0,0), tool_rpy=(0,0,0), use_identity_wobj=True)
 
-                # 終点ACK
-                self.client.stop_ack_drain()
-                self.client.flush_recv()
-                if self._check_pause_skip():
-                    return None if self.skip_flag.is_set() else False
+        going_to_B = label.startswith("B")
 
-                self._move_final_with_optional_fine((tx,ty,tz), (rr,pp,yw), final_fine, final_p_tcp)
-
-                # ① B到達 → 停止→待機→同期保存
-                if label.startswith("B"):
-                    self._pause_wait_and_sync_log(event_type="arrived_B",
-                                                  target_label=label,
-                                                  target_pose=target_xyzrpy,
-                                                  pause_sec=pause_sec)
-
+        # 中断条件：一時停止/スキップ or ②③ピントリガ（B時のみ）
+        def _check_abort():
+            # 一時停止
+            while self.pause_flag.is_set():
+                time.sleep(0.02)
+            # スキップ
+            if self.skip_flag.is_set():
                 return True
+            # ②③ピントリガ（Bに向かう時のみ監視）
+            if going_to_B:
+                pins,_ = self.arduino.get_latest()
+                vals = [v if v >= 0 else 9999 for v in pins]
+                if any(v <= thresh_any for v in vals) or all(v <= thresh_all for v in vals):
+                    # 停止→待機→同期ログ
+                    time.sleep(pause_sec)
+                    pins_snapshot,_ = self.arduino.get_latest()
+                    ax,ay,az,qx,qy,qz,qw = self.client.get_cart()
+                    r_act,p_act,y_act = quat_to_rpy_deg(qx,qy,qz,qw)
+                    actual_xyzrpy = (ax,ay,az,r_act,p_act,y_act)
+                    self._log_event_xyzrpy("pin_trigger", label, target_xyzrpy, actual_xyzrpy, pins_snapshot)
+                    # 退避（Aへ）
+                    if retreat_A_pose is not None:
+                        ax2,ay2,az2,ar2,ap2,ayw2 = retreat_A_pose
+                        self.client.moveL_ack(ax2, ay2, az2, (ar2,ap2,ayw2))
+                    # Bはスキップ扱い
+                    self.skip_flag.set()
+                    return True
+            return False
 
-            except RecoverableCommError:
-                # 自動再開：ドレイン停止→フラッシュ→小休止→ループ頭から再試行
-                try:
-                    self.client.stop_ack_drain()
-                    self.client.flush_recv()
-                except:
-                    pass
-                time.sleep(0.2)
-                continue
+        # 実行（途中で _check_abort() が True なら即中断）
+        mover.run(segments, check_abort=_check_abort)
 
-            except Exception:
-                try:
-                    self.client.stop_ack_drain()
-                    self.client.flush_recv()
-                except:
-                    pass
-                raise
+        # スキップ指示で中断されていれば None を返し、呼び出し側で次へ
+        if self.skip_flag.is_set():
+            self.skip_flag.clear()
+            return None
+
+        # ここまで来たら目標到達。Bなら停止→待機→同期ログ
+        if going_to_B:
+            time.sleep(pause_sec)
+            pins_snapshot,_ = self.arduino.get_latest()
+            ax,ay,az,qx,qy,qz,qw = self.client.get_cart()
+            r_act,p_act,y_act = quat_to_rpy_deg(qx,qy,qz,qw)
+            actual_xyzrpy = (ax,ay,az,r_act,p_act,y_act)
+            self._log_event_xyzrpy("arrived_B", label, target_xyzrpy, actual_xyzrpy, pins_snapshot)
+
+        return True
+    # =======================================================================
+
 
     # === ②③の判定 ===
     def _check_pin_triggers(self, thresh_any, thresh_all):
@@ -815,20 +1038,27 @@ class App(tk.Tk):
             time.sleep(0.02)
         return self.skip_flag.is_set()
 
+    # --- 置換版：最終点だけ fine 停止（コピペ置換） ---
     def _move_final_with_optional_fine(self, final_xyz, target_rpy, final_fine, final_p_tcp):
-        if final_fine:
-            p_tcp = float(self.var_p_tcp.get())
-            p_ori = float(self.var_p_ori.get())
-            z_ori = float(self.var_z_ori.get())
-            try:
-                self.client.set_zone(final_p_tcp, p_ori, z_ori)
-                time.sleep(0.02)
-                self.client.moveL_ack(final_xyz[0], final_xyz[1], final_xyz[2], target_rpy)
-            finally:
-                time.sleep(0.02)
-                self.client.set_zone(p_tcp, p_ori, z_ori)
-        else:
+        p_tcp, p_ori, z_ori = _sanitize_zone_values(self.var_p_tcp.get(),
+                                            self.var_p_ori.get(),
+                                            self.var_z_ori.get())
+        final_p_tcp = _parse_float_guard(final_p_tcp, 0.5, 0.1, 50.0, "FINAL_P_TCP")
+        print(f"[DEBUG] FINAL fine zone -> ({final_p_tcp}, {p_ori}, {z_ori})")
+
+
+        if not final_fine:
             self.client.moveL_ack(final_xyz[0], final_xyz[1], final_xyz[2], target_rpy)
+            return
+
+        # 最終点直前だけ fine 寄りに
+        self.zs.set_zone_if_changed(final_p_tcp, p_ori, z_ori)
+        self.client.moveL_ack(final_xyz[0], final_xyz[1], final_xyz[2], target_rpy)
+        # 元に戻す（差分送信で不要なら送られない）
+        self.zs.set_zone_if_changed(p_tcp, p_ori, z_ori)
+    # =======================================================================
+
+
 
     # === 終了処理 ===
     def destroy(self):
