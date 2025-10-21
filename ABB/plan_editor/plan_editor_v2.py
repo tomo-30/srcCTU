@@ -74,73 +74,64 @@ def set_equal_3d(ax, pts):
     ax.set_ylim(c[1]-r, c[1]+r)
     ax.set_zlim(c[2]-r, c[2]+r)
 
-# ------- planner（赤丸重複ゼロ） -------
-def plan_without_duplicates(O, lx, ly, dx, dy, bases_xyz, L, tol_nd=6):
-    if dx <= 0 or dy <= 0:
+# ------- planner（中心対称の等間隔格子 / 単一点ならB=O） -------
+def plan_centered_uniform_grid(O, lx, ly, dx, dy, bases_xyz, L):
+    """
+    目的:
+      - 探索範囲の中心 O=(Ox,Oy,Oz) を幾何学的中心として、
+        B（手先中心）を x,y ともに対称かつ等間隔で配置する
+      - (nx-1)*dx <= lx, (ny-1)*dy <= ly を満たす最大の整数 nx,ny を自動選定
+      - nx==1 or ny==1 の場合でも中心対称性を保つ（単一点ならB=O）
+      - Bz は従来通り：先端が z=O.z に来るように設定
+    戻り値:
+      B_xy, Pb_xy_all, Bz, uncovered(空), S
+    """
+    # ガード
+    if dx <= 0 or dy <= 0 or lx <= 0 or ly <= 0:
         return np.zeros((0,2)), np.zeros((0,2)), float("nan"), np.zeros((0,2)), np.zeros((0,2))
 
-    # 先端 z=O.z に揃う Bz（根元zが全ピン同一前提．違う場合は平均で近似）
-    Bz = O[2] + (float(np.mean(bases_xyz[:,2])) + L)
+    # 先端が z=O.z に来るようなBz（手先Z原点が全ピン同一前提）
+    Bz = float(O[2] + (float(np.mean(bases_xyz[:, 2])) + float(L)))
 
-    # RPY=(0,180,0) → 先端XY = B + (-px, +py)
-    px, py = bases_xyz[:,0], bases_xyz[:,1]
-    S = np.column_stack([-px, +py])  # (N,2) … 先端XYオフセット
+    # 先端XYオフセット：RPY=(0,180,0)想定 → S = (-px, +py)
+    px, py = bases_xyz[:, 0], bases_xyz[:, 1]
+    S = np.column_stack([-px, +py]) if bases_xyz.size > 0 else np.zeros((0,2))
 
-    T, xs, ys = build_targets(O, lx, ly, dx, dy)
-    Txy = T[:, :2]
-    Tkeys = {round_key_xy(q, tol_nd) for q in Txy}
-    order = np.lexsort((-Txy[:,0], Txy[:,1]))  # y昇順→x降順
+    # ===== 中心対称の格子点数 nx, ny を決定 =====
+    # 最大点数候補
+    nx = max(1, int(math.floor(lx / dx)) + 1)
+    ny = max(1, int(math.floor(ly / dy)) + 1)
 
-    occupied = set()  # 既出の赤丸（全体）
-    covered  = set()  # 範囲内で埋まった格子点
-    B_list = []
-    tips_all = []
+    # はみ出しを防ぐため (nx-1)*dx <= lx, (ny-1)*dy <= ly を満たすまで減らす
+    while (nx - 1) * dx > lx + 1e-9 and nx > 1:
+        nx -= 1
+    while (ny - 1) * dy > ly + 1e-9 and ny > 1:
+        ny -= 1
 
-    for idx in order:
-        t = Txy[idx]
-        tk = round_key_xy(t, tol_nd)
-        if tk in covered:
-            continue
+    # ===== 中心対称の座標列を生成 =====
+    # 位置は Ox + (i - (nx-1)/2)*dx で完全対称（奇数なら中心点を含む）
+    cx = (nx - 1) / 2.0
+    cy = (ny - 1) / 2.0
+    xs = O[0] + (np.arange(nx) - cx) * dx
+    ys = O[1] + (np.arange(ny) - cy) * dy
 
-        best = None
-        best_gain = -1
-        for i in range(S.shape[0]):
-            s_i = S[i]
-            Bxy = t - s_i
-            tips = tips_from_Bxy(Bxy, S)
-            keys = [round_key_xy(p, tol_nd) for p in tips]
+    # 単一点ケースは B=O を保証
+    if nx * ny == 1:
+        B_xy = np.array([[float(O[0]), float(O[1])]], dtype=float)
+    else:
+        X, Y = np.meshgrid(xs, ys)
+        B_xy = np.column_stack([X.ravel(), Y.ravel()])
 
-            # 既出の赤丸に1つでも一致 → 不採用（重複ゼロ）
-            if any(k in occupied for k in keys):
-                continue
+    # 表示用：全Bでの Pb（先端XY）
+    if B_xy.size > 0 and S.size > 0:
+        Pb_xy_all = np.vstack([b[None, :] + S for b in B_xy])
+    else:
+        Pb_xy_all = np.zeros((0,2))
 
-            gain = sum(1 for k in keys if k in Tkeys and k not in covered)
-            if gain > best_gain:
-                best_gain = gain
-                best = (Bxy, tips, keys)
+    uncovered = np.zeros((0,2))  # 本仕様では未使用
+    return B_xy, Pb_xy_all, Bz, uncovered, S
 
-        if best is None:
-            continue  # この格子点は条件下で埋められない
 
-        Bxy, tips, keys = best
-        B_list.append(Bxy)
-        tips_all.extend(tips.tolist())
-        for k in keys:
-            occupied.add(k)
-            if k in Tkeys:
-                covered.add(k)
-
-    # 未カバー格子点（参考）
-    uncovered_keys = [k for k in Tkeys if k not in covered]
-    uncovered = np.array(uncovered_keys, float) if uncovered_keys else np.zeros((0,2))
-
-    return (
-        np.array(B_list, float) if B_list else np.zeros((0,2)),  # B_xy
-        np.array(tips_all, float) if tips_all else np.zeros((0,2)),  # Pb_xy (Bでの先端XY)
-        Bz,
-        uncovered,
-        S  # 先端XYオフセット（N,2）
-    )
 
 # --------------- GUI ----------------
 class PlannerGUI(QtWidgets.QWidget):
@@ -160,22 +151,22 @@ class PlannerGUI(QtWidgets.QWidget):
         # O, 長方形, 格子ピッチ
         self.ox=QtWidgets.QDoubleSpinBox(); self.ox.setRange(-1e6,1e6); self.ox.setDecimals(3); self.ox.setValue(400.0)
         self.oy=QtWidgets.QDoubleSpinBox(); self.oy.setRange(-1e6,1e6); self.oy.setDecimals(3); self.oy.setValue(0.0)
-        self.oz=QtWidgets.QDoubleSpinBox(); self.oz.setRange(-1e6,1e6); self.oz.setDecimals(3); self.oz.setValue(400.0)
+        self.oz=QtWidgets.QDoubleSpinBox(); self.oz.setRange(-1e6,1e6); self.oz.setDecimals(3); self.oz.setValue(20.0)
         form.addRow("中心 O.x [mm]", self.ox)
         form.addRow("中心 O.y [mm]", self.oy)
         form.addRow("中心 O.z [mm]", self.oz)
 
-        self.lx=QtWidgets.QDoubleSpinBox(); self.lx.setRange(0.1,1e6); self.lx.setDecimals(3); self.lx.setValue(60.0)
-        self.ly=QtWidgets.QDoubleSpinBox(); self.ly.setRange(0.1,1e6); self.ly.setDecimals(3); self.ly.setValue(60.0)
-        self.dx=QtWidgets.QDoubleSpinBox(); self.dx.setRange(0.1,1e6); self.dx.setDecimals(6); self.dx.setValue(10.0)
-        self.dy=QtWidgets.QDoubleSpinBox(); self.dy.setRange(0.1,1e6); self.dy.setDecimals(6); self.dy.setValue(10.0)
+        self.lx=QtWidgets.QDoubleSpinBox(); self.lx.setRange(0.1,1e6); self.lx.setDecimals(3); self.lx.setValue(200.0)
+        self.ly=QtWidgets.QDoubleSpinBox(); self.ly.setRange(0.1,1e6); self.ly.setDecimals(3); self.ly.setValue(200.0)
+        self.dx=QtWidgets.QDoubleSpinBox(); self.dx.setRange(0.1,1e6); self.dx.setDecimals(6); self.dx.setValue(110.0)
+        self.dy=QtWidgets.QDoubleSpinBox(); self.dy.setRange(0.1,1e6); self.dy.setDecimals(6); self.dy.setValue(110.0)
         form.addRow("長方形 辺 lx [mm]", self.lx)
         form.addRow("長方形 辺 ly [mm]", self.ly)
         form.addRow("格子間隔 dx [mm]", self.dx)
         form.addRow("格子間隔 dy [mm]", self.dy)
 
         # 退避量 t
-        self.clearance = QtWidgets.QDoubleSpinBox(); self.clearance.setRange(0.0, 1e6); self.clearance.setDecimals(3); self.clearance.setValue(300.0)
+        self.clearance = QtWidgets.QDoubleSpinBox(); self.clearance.setRange(0.0, 1e6); self.clearance.setDecimals(3); self.clearance.setValue(330.0)
         form.addRow("退避量 t (= A.z - B.z) [mm]", self.clearance)
 
         # 姿勢表示
@@ -251,8 +242,9 @@ class PlannerGUI(QtWidgets.QWidget):
 
         O, lx, ly, dx, dy, t = self.params()
         # 計画：BとPb（Bでの先端XY），Bz，S
-        B_xy, Pb_xy_all, Bz, uncovered, S = plan_without_duplicates(O, lx, ly, dx, dy, self.bases_wrist, self.pin_len)
-
+        B_xy, Pb_xy_all, Bz, uncovered, S = plan_centered_uniform_grid(
+            O, lx, ly, dx, dy, self.bases_wrist, self.pin_len
+        )
         # A の計算：A.xy = B.xy,  A.z = Bz + t
         A_xy = B_xy.copy()
         Az = Bz + t

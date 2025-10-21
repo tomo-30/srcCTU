@@ -1,0 +1,4 @@
+t,phase,label,ix,cmd,x,y,z,roll,pitch,yaw,roll_unw,pitch_unw,yaw_unw,ang_to_prev_deg,zone,v_tcp,v_ori,cur_x,cur_y,cur_z,cur_roll,cur_pitch,cur_yaw,post_x,post_y,post_z,post_roll,post_pitch,post_yaw
+2025-10-20 17:19:48,SESSION_START,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+2025-10-20 17:19:49,PRELOAD,,0,send_only,344.7121323529412,-54.91066176470588,158.5408088235294,180.0,180.0,0.0,-180.0,-180.0,0.0,0.0,"(1.5, 8.0, 8.0)",30.0,80.0
+2025-10-20 17:19:49,PRELOAD,,1,send_only,344.71426470588233,-54.91132352941176,160.55161764705883,180.0,180.0,0.0,-180.0,-180.0,0.0,0.0,"(1.5, 8.0, 8.0)",30.0,80.0

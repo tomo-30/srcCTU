@@ -1,0 +1,45 @@
+MODULE Module1
+    !***********************************************************
+    !
+    ! Module:  Module1
+    !
+    ! Description:
+    !   <Insert description here>
+    !
+    ! Author: user
+    !
+    ! Version: 1.0
+    !
+    !***********************************************************
+    
+    
+    !***********************************************************
+    !
+    ! Procedure main
+    !
+    !   This is the entry point of your program
+    !
+    !***********************************************************
+    PROC main()
+        
+        VAR robtarget p1;
+        VAR robtarget p2;
+        CONST extjoint NOEXT:=[9E9,9E9,9E9,9E9,9E9,9E9];
+    
+        ! ---- p1 ----
+        p1.trans:=[350, 0, 300];
+        p1.rot  :=OrientZYX(0, 180, 0);
+        p1.extax:=NOEXT;              ! confdata ???(????OK)
+    
+        ! ---- p2 ----
+        p2.trans:=[350, 0, 150];
+        p2.rot  :=OrientZYX(0, 180, 0);
+        p2.extax:=NOEXT;
+    
+        ConfL\Off;
+        MoveJ  p1, v50, z10, tool0\WObj:=wobj0;  ! ? MoveAbsJ ???? MoveJ
+        MoveL  p2, v100, z10, tool0;
+        MoveL  p1, v50,  fine, tool0;
+        
+    ENDPROC
+ENDMODULE
