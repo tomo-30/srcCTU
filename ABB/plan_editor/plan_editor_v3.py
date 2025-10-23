@@ -190,15 +190,15 @@ class PlannerGUI(QtWidgets.QWidget):
 
         form = QtWidgets.QFormLayout()
         # O, 長方形, 格子ピッチ
-        self.ox=QtWidgets.QDoubleSpinBox(); self.ox.setRange(-1e6,1e6); self.ox.setDecimals(3); self.ox.setValue(400.0)
+        self.ox=QtWidgets.QDoubleSpinBox(); self.ox.setRange(-1e6,1e6); self.ox.setDecimals(3); self.ox.setValue(500.0)
         self.oy=QtWidgets.QDoubleSpinBox(); self.oy.setRange(-1e6,1e6); self.oy.setDecimals(3); self.oy.setValue(0.0)
         self.oz=QtWidgets.QDoubleSpinBox(); self.oz.setRange(-1e6,1e6); self.oz.setDecimals(3); self.oz.setValue(20.0)
         form.addRow("中心 O.x [mm]", self.ox)
         form.addRow("中心 O.y [mm]", self.oy)
         form.addRow("中心 O.z [mm]", self.oz)
 
-        self.lx=QtWidgets.QDoubleSpinBox(); self.lx.setRange(0.1,1e6); self.lx.setDecimals(3); self.lx.setValue(200.0)
-        self.ly=QtWidgets.QDoubleSpinBox(); self.ly.setRange(0.1,1e6); self.ly.setDecimals(3); self.ly.setValue(200.0)
+        self.lx=QtWidgets.QDoubleSpinBox(); self.lx.setRange(0.1,1e6); self.lx.setDecimals(3); self.lx.setValue(300.0)
+        self.ly=QtWidgets.QDoubleSpinBox(); self.ly.setRange(0.1,1e6); self.ly.setDecimals(3); self.ly.setValue(400.0)
         self.dx=QtWidgets.QDoubleSpinBox(); self.dx.setRange(0.1,1e6); self.dx.setDecimals(6); self.dx.setValue(110.0)
         self.dy=QtWidgets.QDoubleSpinBox(); self.dy.setRange(0.1,1e6); self.dy.setDecimals(6); self.dy.setValue(110.0)
         form.addRow("長方形 辺 lx [mm]", self.lx)
@@ -211,16 +211,16 @@ class PlannerGUI(QtWidgets.QWidget):
         form.addRow("退避量 t (= A.z - B.z) [mm]", self.clearance)
 
         # ---- RPY（ユーザ指定）----
-        self.roll  = QtWidgets.QDoubleSpinBox();  self.roll.setRange(-360,360);   self.roll.setDecimals(3);  self.roll.setValue(180.0)
+        self.roll  = QtWidgets.QDoubleSpinBox();  self.roll.setRange(-360,360);   self.roll.setDecimals(3);  self.roll.setValue(0.0)
         self.pitch = QtWidgets.QDoubleSpinBox();  self.pitch.setRange(-360,360);  self.pitch.setDecimals(3); self.pitch.setValue(180.0)
-        self.yaw   = QtWidgets.QDoubleSpinBox();  self.yaw.setRange(-360,360);    self.yaw.setDecimals(3);   self.yaw.setValue(0.0)
+        self.yaw   = QtWidgets.QDoubleSpinBox();  self.yaw.setRange(-360,360);    self.yaw.setDecimals(3);   self.yaw.setValue(-45.0)
         form.addRow("手先 roll [deg]",  self.roll)
         form.addRow("手先 pitch [deg]", self.pitch)
         form.addRow("手先 yaw [deg]",   self.yaw)
 
         # ---- 手首特異点回避用 バイアス ----
-        self.r_bias = QtWidgets.QDoubleSpinBox(); self.r_bias.setRange(-30,30); self.r_bias.setDecimals(3); self.r_bias.setValue(-2.0)
-        self.p_bias = QtWidgets.QDoubleSpinBox(); self.p_bias.setRange(-30,30); self.p_bias.setDecimals(3); self.p_bias.setValue(-5.0)
+        self.r_bias = QtWidgets.QDoubleSpinBox(); self.r_bias.setRange(-30,30); self.r_bias.setDecimals(3); self.r_bias.setValue(0.0)
+        self.p_bias = QtWidgets.QDoubleSpinBox(); self.p_bias.setRange(-30,30); self.p_bias.setDecimals(3); self.p_bias.setValue(0.0)
         form.addRow("roll バイアス [deg]",  self.r_bias)
         form.addRow("pitch バイアス [deg]", self.p_bias)
 

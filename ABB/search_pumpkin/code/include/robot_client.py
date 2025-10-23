@@ -6,12 +6,20 @@ from info.config import (DEFAULT_RECV_TIMEOUT, IDLE_FRAME_WINDOW_SEC,
                          MOVEL_ACK_TIMEOUT_SEC)
 from datetime import datetime
 
-
 class RecoverableCommError(Exception):
     pass
 
 DELIM_HASH = b'#'
 DELIMS = (b'#', b'\n', b'\r')  # ← 区切り拡張
+
+def _quat_wxyz_from_rpy(rpy_deg):
+    """rpy(deg) -> (qw,qx,qy,qz) に並べ替え。ついでに正規化。"""
+    qx, qy, qz, qw = rpy_deg_to_quat(*rpy_deg)  # ここは [x,y,z,w]
+    n = (qx*qx + qy*qy + qz*qz + qw*qw) ** 0.5
+    if n > 0:
+        qx, qy, qz, qw = qx/n, qy/n, qz/n, qw/n
+    return (qw, qx, qy, qz)
+
 
 class RobotClient:
     def __init__(self, host, port):
@@ -36,6 +44,8 @@ class RobotClient:
 
         # アイドル判定用
         self._last_rx_ts = time.time()
+
+    
 
     def set_speed_if_changed(self, v_tcp, v_ori):
         cur = (float(v_tcp), float(v_ori))
@@ -212,15 +222,17 @@ class RobotClient:
         raise last
 
     def set_tool(self, txyz, rpy_deg):
-        q = rpy_deg_to_quat(*rpy_deg)
-        return self._send_and_recv([6, *txyz, *q], expect=6)
+        qw, qx, qy, qz = _quat_wxyz_from_rpy(rpy_deg)
+        return self._send_and_recv([6, *txyz, qw, qx, qy, qz], expect=6)
+
 
     def set_wobj(self, identity=True, txyz=(0,0,0), rpy_deg=(0,0,0)):
         if identity:
             return self._send_and_recv([7, 0.0,0.0,0.0, 1.0,0.0,0.0,0.0], expect=7)
         else:
-            q = rpy_deg_to_quat(*rpy_deg)
-            return self._send_and_recv([7, *txyz, *q], expect=7)
+            qw, qx, qy, qz = _quat_wxyz_from_rpy(rpy_deg)
+            return self._send_and_recv([7, *txyz, qw, qx, qy, qz], expect=7)
+
 
     def set_speed(self, v_tcp, v_ori):
         return self._send_and_recv([8, v_tcp, v_ori], expect=8, allow_stray_move_ack=True)
@@ -235,19 +247,25 @@ class RobotClient:
         if ok != 1 or len(toks) < 9:
             raise RuntimeError(f"CASE3 reply invalid: '{' '.join(toks)}'")
         x = float(toks[2]); y = float(toks[3]); z = float(toks[4])
-        qx = float(toks[5]); qy = float(toks[6]); qz = float(toks[7]); qw = float(toks[8])
+        # サーバは [qw,qx,qy,qz] を返す前提でパース
+        qw = float(toks[5]); qx = float(toks[6]); qy = float(toks[7]); qz = float(toks[8])
         return (x, y, z, qx, qy, qz, qw)
 
+
     def moveL_ack(self, x, y, z, rpy_deg, ack_timeout=MOVEL_ACK_TIMEOUT_SEC):
-        qx, qy, qz, qw = rpy_deg_to_quat(*rpy_deg)
-        return self._send_and_recv([1, x, y, z, qx, qy, qz, qw],
-                                   recv_timeout=ack_timeout, expect=1)
+        qw, qx, qy, qz = _quat_wxyz_from_rpy(rpy_deg)
+        return self._send_and_recv([1, x, y, z, qw, qx, qy, qz],
+                                recv_timeout=ack_timeout, expect=1)
+
 
     def moveL_send_only(self, x, y, z, rpy_deg, tiny_pause=0.03):
         if not self.sock: raise RuntimeError("Socket not connected")
-        qx, qy, qz, qw = rpy_deg_to_quat(*rpy_deg)
-        msg = " ".join(fmt(p) for p in [1, x, y, z, qx, qy, qz, qw]) + " #"
+        qw, qx, qy, qz = _quat_wxyz_from_rpy(rpy_deg)
+        msg = " ".join(fmt(p) for p in [1, x, y, z, qw, qx, qy, qz]) + " #"
         with self._sock_lock:
             self.sock.sendall(msg.encode("ascii"))
         if tiny_pause > 0:
             time.sleep(tiny_pause)
+
+    
+    
