@@ -172,7 +172,7 @@ class App(tk.Tk):
 
         self.vars = {}
         labels = ["X(mm)","Y(mm)","Z(mm)","Roll(deg)","Pitch(deg)","Yaw(deg)"]
-        defaults = [400.0, 0.0, 400.0, 180.0, 0.0, 180.0]
+        defaults = [500.0, 0.0, 400.0, 0.0, 180.0, -45.0]
         for i,(lab,defv) in enumerate(zip(labels, defaults)):
             ttk.Label(frm, text=lab, width=10).grid(row=i//3, column=(i%3)*2, sticky="e", padx=4, pady=4)
             v = tk.StringVar(value=str(defv)); self.vars[lab]=v
