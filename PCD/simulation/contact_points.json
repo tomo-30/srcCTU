@@ -1,8 +1,8 @@
 {
   "ground_z": 0.0,
   "source": {
-    "stl": "c:\\Users\\user\\Mizuuchi-Lab\\CTU\\srcCTU\\PCD\\simulation\\pumpkin1.stl",
-    "push_plan": "c:\\Users\\user\\Mizuuchi-Lab\\CTU\\srcCTU\\PCD\\simulation\\push_plan.json",
+    "stl": "c:\\Users\\user\\Mizuuchi-Lab\\CTU\\srcCTU\\PCD\\simulation\\pumpkin_down_on_desk(500-0-67_1-180-0-90).stl",
+    "push_plan": "c:\\Users\\user\\Mizuuchi-Lab\\CTU\\srcCTU\\ABB\\search_pumpkin\\code\\info\\push_plan_precision.json",
     "decimated": true,
     "target_reduction": 0.8
   },
@@ -10,9007 +10,1256 @@
   "pin_length_mm": 30.0,
   "contacts": [
     {
-      "id": 1,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 1,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 1,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -160.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 1,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 1,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 1,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -160.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 1,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 1,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 1,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -160.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 2,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 2,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
       "id": 2,
       "pin_index": 2,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -160.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 2,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 2,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 2,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -160.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 2,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 2,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 2,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -160.0,
-        -90.0,
-        0.0
+        480.0,
+        -20.0,
+        110.55054473876953
       ]
     },
     {
       "id": 3,
       "pin_index": 0,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -100.0,
-        -20.0,
-        0.0
+        480.0,
+        -30.0,
+        104.44434356689453
       ]
     },
     {
       "id": 3,
       "pin_index": 1,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -130.0,
-        -20.0,
-        0.0
+        480.0,
+        -7.640326969726198e-15,
+        111.4757308959961
       ]
     },
     {
       "id": 3,
       "pin_index": 2,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -160.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 3,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 3,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 3,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -160.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 3,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 3,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 3,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -160.0,
-        -80.0,
-        0.0
+        480.0,
+        30.0,
+        101.7083740234375
       ]
     },
     {
       "id": 4,
       "pin_index": 0,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -100.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 4,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -130.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 4,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -160.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 4,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -100.0,
+        480.0,
         20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 4,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -130.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 4,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -160.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 4,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -100.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 4,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -130.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 4,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -160.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -100.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -130.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -160.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -100.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -130.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -160.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -100.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -130.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 5,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -160.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -100.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -130.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -160.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -100.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -130.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -160.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -100.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -130.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 6,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -160.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 7,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -100.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 7,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -130.0,
-        140.0,
-        0.0
+        109.49767303466797
       ]
     },
     {
       "id": 7,
       "pin_index": 2,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -160.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 7,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -100.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 7,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -130.0,
-        110.0,
-        0.0
+        530.0,
+        -20.0,
+        105.8106689453125
       ]
     },
     {
       "id": 7,
       "pin_index": 5,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -160.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 7,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -100.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 7,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -130.0,
-        80.0,
-        0.0
+        500.0,
+        -20.0,
+        113.3570556640625
       ]
     },
     {
       "id": 7,
       "pin_index": 8,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -160.0,
-        80.0,
-        0.0
+        470.0,
+        -20.0,
+        103.77703094482422
       ]
     },
     {
       "id": 8,
       "pin_index": 0,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -100.0,
-        150.0,
-        0.0
+        530.0,
+        -30.0,
+        98.49235534667969
       ]
     },
     {
       "id": 8,
       "pin_index": 1,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -130.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 8,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -160.0,
-        150.0,
-        0.0
+        530.0,
+        -7.640326969726198e-15,
+        109.65589141845703
       ]
     },
     {
       "id": 8,
       "pin_index": 3,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -100.0,
-        120.0,
-        0.0
+        500.0,
+        -30.0,
+        109.40927124023438
       ]
     },
     {
       "id": 8,
       "pin_index": 4,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -130.0,
-        120.0,
-        0.0
+        500.0,
+        -6.927648270983007e-15,
+        108.70702362060547
       ]
     },
     {
       "id": 8,
       "pin_index": 5,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -160.0,
-        120.0,
-        0.0
+        500.0,
+        30.0,
+        110.04591369628906
       ]
     },
     {
       "id": 8,
       "pin_index": 6,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -100.0,
-        90.0,
-        0.0
+        470.0,
+        -30.0,
+        94.7754135131836
       ]
     },
     {
       "id": 8,
       "pin_index": 7,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -130.0,
-        90.0,
-        0.0
+        470.0,
+        -6.214969995756289e-15,
+        107.42108917236328
       ]
     },
     {
       "id": 8,
       "pin_index": 8,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -160.0,
-        90.0,
-        0.0
+        470.0,
+        30.0,
+        84.08482360839844
       ]
     },
     {
       "id": 9,
       "pin_index": 0,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -100.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 9,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -130.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 9,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -160.0,
-        160.0,
-        0.0
+        530.0,
+        20.0,
+        101.3355941772461
       ]
     },
     {
       "id": 9,
       "pin_index": 3,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -100.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 9,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -130.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 9,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -160.0,
-        130.0,
-        0.0
+        500.0,
+        20.0,
+        114.30660247802734
       ]
     },
     {
       "id": 9,
       "pin_index": 6,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -100.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 9,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -130.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 9,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -160.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 10,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -150.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 11,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -150.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 12,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 12,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 12,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 12,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 12,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 12,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 12,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -90.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 12,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -120.0,
-        -80.0,
-        0.0
+        470.0,
+        20.0,
+        99.89129638671875
       ]
     },
     {
       "id": 12,
       "pin_index": 8,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -150.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 13,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 13,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 13,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 13,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 13,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 13,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        20.0,
-        0.0
+        520.0,
+        -20.0,
+        112.2878189086914
       ]
     },
     {
       "id": 13,
       "pin_index": 6,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -90.0,
-        -10.0,
-        0.0
+        520.0,
+        -30.0,
+        106.14825439453125
       ]
     },
     {
       "id": 13,
       "pin_index": 7,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -120.0,
-        -10.0,
-        0.0
+        520.0,
+        -6.214969995756289e-15,
+        114.56877899169922
       ]
     },
     {
       "id": 13,
       "pin_index": 8,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -150.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 14,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 14,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 14,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 14,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
+        520.0,
         30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 14,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 14,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        30.0,
-        0.0
+        102.79209899902344
       ]
     },
     {
       "id": 14,
       "pin_index": 6,
-      "type": "ground",
+      "type": "stl",
       "point": [
-        -90.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 14,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -120.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 14,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -150.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -90.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -120.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 15,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -150.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -90.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -120.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 16,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -150.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -90.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -120.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 17,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -150.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -90.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -120.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -150.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -90.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -120.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -150.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -90.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -120.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 18,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -150.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 19,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 20,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 21,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
+        520.0,
         20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 22,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 23,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 24,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 25,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 26,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -80.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -110.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -140.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -80.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -110.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -140.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -80.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -110.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 27,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -140.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 28,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        -10.0,
-        -40.0,
-        122.76337432861328
-      ]
-    },
-    {
-      "id": 28,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -40.0,
-        -40.0,
-        118.1513671875
-      ]
-    },
-    {
-      "id": 28,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        -10.0,
-        -70.0,
-        108.6754379272461
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        -10.0,
-        -30.0,
-        122.84046936035156
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -40.0,
-        -30.0,
-        120.86106872558594
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        -10.0,
-        -60.0,
-        116.4005126953125
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -40.0,
-        -60.0,
-        104.44225311279297
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        -10.0,
-        -20.0,
-        122.64509582519531
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -40.0,
-        -20.0,
-        123.32263946533203
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -70.0,
-        -20.0,
-        97.0739517211914
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        -10.0,
-        -50.0,
-        120.66817474365234
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -40.0,
-        -50.0,
-        113.27010345458984
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        -10.0,
-        -80.0,
-        95.48246002197266
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        -10.0,
-        50.0,
-        124.32240295410156
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -40.0,
-        50.0,
-        118.14396667480469
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        -10.0,
-        20.0,
-        124.83279418945312
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -40.0,
-        20.0,
-        125.0267562866211
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -70.0,
-        20.0,
-        97.08805847167969
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        -10.0,
-        -10.0,
-        122.4046859741211
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -40.0,
-        -10.0,
-        124.9540023803711
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -70.0,
-        -10.0,
-        100.1396484375
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        -10.0,
-        60.0,
-        120.2471923828125
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -40.0,
-        60.0,
-        110.43144226074219
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        -10.0,
-        30.0,
-        125.49156188964844
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -40.0,
-        30.0,
-        124.19305419921875
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        -10.0,
-        0.0,
-        126.1009750366211
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -40.0,
-        0.0,
-        124.57608032226562
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -70.0,
-        0.0,
-        99.3791732788086
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        -10.0,
-        70.0,
-        112.93228912353516
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -40.0,
-        70.0,
-        98.5517807006836
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        -10.0,
-        40.0,
-        125.99000549316406
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -40.0,
-        40.0,
-        122.01829528808594
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        -10.0,
-        10.0,
-        122.5770263671875
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -40.0,
-        10.0,
-        124.01444244384766
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        -10.0,
-        80.0,
-        101.09392547607422
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -10.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -40.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -70.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -10.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -40.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -70.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -10.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -40.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 35,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -70.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -10.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -40.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -70.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -10.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -40.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -70.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -10.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -40.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 36,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -70.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        0.0,
-        -40.0,
-        122.69853210449219
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -30.0,
-        -40.0,
-        121.15599822998047
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -60.0,
-        -40.0,
-        101.30427551269531
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        0.0,
-        -70.0,
-        110.14895629882812
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -30.0,
-        -70.0,
-        100.36068725585938
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        0.0,
-        -30.0,
-        122.39776611328125
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -30.0,
-        -30.0,
-        123.96236419677734
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -60.0,
-        -30.0,
-        107.51277923583984
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        0.0,
-        -60.0,
-        116.6629409790039
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -30.0,
-        -60.0,
-        109.4332046508789
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        0.0,
-        -20.0,
-        121.17717742919922
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -30.0,
-        -20.0,
-        125.2347183227539
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -60.0,
-        -20.0,
-        110.88631439208984
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        0.0,
-        -50.0,
-        120.62147521972656
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -30.0,
-        -50.0,
-        116.1722412109375
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        0.0,
-        -80.0,
-        97.35179901123047
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        0.0,
-        50.0,
-        124.00531768798828
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -30.0,
-        50.0,
-        121.287841796875
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        0.0,
-        20.0,
-        121.69245147705078
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -30.0,
-        20.0,
-        127.4311294555664
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -60.0,
-        20.0,
-        111.24919128417969
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        0.0,
-        -10.0,
-        139.16873168945312
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -30.0,
-        -10.0,
-        127.0233154296875
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -60.0,
-        -10.0,
-        111.8402099609375
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -30.0,
-        30.0,
-        127.31954193115234
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        0.0,
-        0.0,
-        155.54795837402344
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -30.0,
-        0.0,
-        126.04155731201172
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        0.0,
-        40.0,
-        125.23762512207031
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -30.0,
-        40.0,
-        125.4222183227539
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        0.0,
-        10.0,
-        151.71240234375
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -30.0,
-        10.0,
-        126.05458068847656
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        0.0,
-        80.0,
-        102.52337646484375
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -30.0,
-        80.0,
-        87.05467987060547
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        0.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -30.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -60.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        0.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -30.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -60.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        0.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -30.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 44,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -60.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        0.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -30.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -60.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        0.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -30.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -60.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        0.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -30.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 45,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -60.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        10.0,
-        -40.0,
-        121.29459381103516
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -20.0,
-        -40.0,
-        122.11273193359375
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -50.0,
-        -40.0,
-        112.10595703125
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        10.0,
-        -70.0,
-        107.27764129638672
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -20.0,
-        -70.0,
-        106.02871704101562
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        10.0,
-        -30.0,
-        121.85274505615234
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -20.0,
-        -30.0,
-        124.11821746826172
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -50.0,
-        -30.0,
-        115.33016204833984
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        10.0,
-        -60.0,
-        114.6604995727539
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -20.0,
-        -60.0,
-        114.06417846679688
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -50.0,
-        -60.0,
-        94.55047607421875
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        10.0,
-        -20.0,
-        120.33763885498047
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -20.0,
-        -20.0,
-        125.0966796875
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -50.0,
-        -20.0,
-        118.48159790039062
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        10.0,
-        -50.0,
-        118.5444564819336
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -20.0,
-        -50.0,
-        118.24768829345703
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -50.0,
-        -50.0,
-        105.25873565673828
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        10.0,
-        50.0,
-        121.76619720458984
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -20.0,
-        50.0,
-        122.00299835205078
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -50.0,
-        50.0,
-        110.32810974121094
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        10.0,
-        20.0,
-        120.54180145263672
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -20.0,
-        20.0,
-        128.0936737060547
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -50.0,
-        20.0,
-        119.76899719238281
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        10.0,
-        -10.0,
-        139.59075927734375
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -20.0,
-        -10.0,
-        126.16533660888672
-      ]
-    },
-    {
-      "id": 49,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -50.0,
-        -10.0,
-        120.19377136230469
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -20.0,
-        30.0,
-        127.93820190429688
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        10.0,
-        0.0,
-        156.94415283203125
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -20.0,
-        40.0,
-        125.70758056640625
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        10.0,
-        10.0,
-        153.21153259277344
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -20.0,
-        10.0,
-        125.565673828125
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        10.0,
-        80.0,
-        98.19481658935547
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -20.0,
-        80.0,
-        97.35746002197266
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        10.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -20.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -50.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        10.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -20.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -50.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        10.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -20.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 53,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -50.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        10.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -20.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -50.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        10.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -20.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -50.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        10.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -20.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 54,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -50.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        50.0,
-        -40.0,
-        109.46934509277344
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        20.0,
-        -40.0,
-        119.89047241210938
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        20.0,
-        -70.0,
-        104.96517944335938
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        50.0,
-        -30.0,
-        113.2477798461914
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        20.0,
-        -30.0,
-        120.90379333496094
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        20.0,
-        -60.0,
-        112.780517578125
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        50.0,
-        -20.0,
-        115.84291076660156
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        20.0,
-        -20.0,
-        120.82466888427734
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        50.0,
-        -50.0,
-        102.79131317138672
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        20.0,
-        -50.0,
-        117.3291015625
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        50.0,
-        50.0,
-        100.12824249267578
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        20.0,
-        50.0,
-        118.88429260253906
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        50.0,
-        20.0,
-        114.51652526855469
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        20.0,
-        20.0,
-        121.8028335571289
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        50.0,
-        -10.0,
-        117.55622863769531
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        20.0,
-        -10.0,
-        121.09481811523438
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        20.0,
-        60.0,
-        114.01683044433594
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        50.0,
-        30.0,
-        112.65532684326172
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        20.0,
-        30.0,
-        121.36490631103516
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        50.0,
-        0.0,
-        117.60227966308594
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        20.0,
-        0.0,
-        119.16401672363281
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        20.0,
-        70.0,
-        105.6565933227539
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        50.0,
-        40.0,
-        107.34435272216797
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        20.0,
-        40.0,
-        121.06832122802734
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        50.0,
-        10.0,
-        115.95158386230469
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        20.0,
-        10.0,
-        120.33309173583984
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        20.0,
-        80.0,
-        90.05308532714844
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        50.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        20.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        50.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        20.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        50.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 62,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        20.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        50.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        20.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        50.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        20.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        50.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 63,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        20.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        60.0,
-        -40.0,
-        98.03459167480469
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        30.0,
-        -40.0,
-        117.5368881225586
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        30.0,
-        -70.0,
-        97.52631378173828
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        60.0,
-        -30.0,
-        103.96499633789062
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        30.0,
-        -30.0,
-        120.12210083007812
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        30.0,
-        -60.0,
-        107.81874084472656
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        60.0,
-        -20.0,
-        108.53130340576172
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        30.0,
-        -20.0,
-        121.15267181396484
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        30.0,
-        -50.0,
-        113.54703521728516
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        30.0,
-        50.0,
-        115.34566497802734
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        60.0,
-        20.0,
-        106.18592071533203
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        30.0,
-        20.0,
-        121.82342529296875
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        60.0,
-        -10.0,
-        109.7914810180664
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        30.0,
-        -10.0,
-        122.47709655761719
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        30.0,
-        60.0,
-        109.17208862304688
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        60.0,
-        30.0,
-        103.31251525878906
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        30.0,
-        30.0,
-        120.80249786376953
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        60.0,
-        0.0,
-        110.56877899169922
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        30.0,
-        0.0,
-        121.34314727783203
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        30.0,
-        70.0,
-        97.53400421142578
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        60.0,
-        40.0,
-        96.30390930175781
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        30.0,
-        40.0,
-        117.83234405517578
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        60.0,
-        10.0,
-        109.01078796386719
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        30.0,
-        10.0,
-        120.75299072265625
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        60.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        30.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        60.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        30.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        60.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 70,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        30.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        60.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        30.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        60.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        30.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        60.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 71,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        30.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        60.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        30.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        60.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        30.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        60.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 72,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        30.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        40.0,
-        -40.0,
-        115.02739715576172
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        40.0,
-        -70.0,
-        87.02764129638672
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        40.0,
-        -30.0,
-        118.40771484375
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        40.0,
-        -60.0,
-        100.6716079711914
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        70.0,
-        -20.0,
-        93.64234924316406
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        40.0,
-        -20.0,
-        119.61579895019531
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        40.0,
-        -50.0,
-        109.47779846191406
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        40.0,
-        50.0,
-        109.3621826171875
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        40.0,
-        20.0,
-        119.90780639648438
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        70.0,
-        -10.0,
-        95.34519958496094
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        40.0,
-        -10.0,
-        121.37141418457031
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        40.0,
-        60.0,
-        100.08855438232422
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        40.0,
-        30.0,
-        118.09642028808594
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        70.0,
-        0.0,
-        96.63943481445312
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        40.0,
-        0.0,
-        120.72653198242188
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        40.0,
-        40.0,
-        114.74748992919922
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        70.0,
-        10.0,
-        94.06893920898438
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        40.0,
-        10.0,
-        119.37129974365234
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        70.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        40.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        70.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        40.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        70.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 79,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        40.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        70.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        40.0,
-        150.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        70.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        40.0,
-        120.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        70.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 80,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        40.0,
-        90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        70.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        40.0,
-        160.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        70.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        40.0,
-        130.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        70.0,
-        100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 81,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        40.0,
-        100.0,
-        0.0
+        110.02984619140625
       ]
     }
   ],
   "xmarks": [
     {
-      "id": 28,
+      "id": 1,
+      "pin_index": 0,
+      "point": [
+        480.00000009108044,
+        -130.0000000910804,
+        20.0
+      ]
+    },
+    {
+      "id": 1,
+      "pin_index": 1,
+      "point": [
+        479.99999938397366,
+        -100.00000000000001,
+        20.0
+      ]
+    },
+    {
+      "id": 1,
       "pin_index": 2,
       "point": [
-        -70.0,
-        -40.0,
-        92.7633743286133
+        480.00000009108044,
+        -69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 28,
+      "id": 1,
+      "pin_index": 3,
+      "point": [
+        450.0,
+        -129.99999938397363,
+        20.0
+      ]
+    },
+    {
+      "id": 1,
       "pin_index": 4,
       "point": [
-        -40.0,
-        -70.0,
-        92.7633743286133
+        450.0,
+        -100.0,
+        20.0
       ]
     },
     {
-      "id": 28,
+      "id": 1,
       "pin_index": 5,
       "point": [
-        -70.0,
-        -70.0,
-        92.7633743286133
+        450.0,
+        -70.00000061602637,
+        20.0
       ]
     },
     {
-      "id": 28,
+      "id": 1,
       "pin_index": 6,
       "point": [
-        -10.0,
-        -100.0,
-        92.7633743286133
+        419.9999999089196,
+        -130.0000000910804,
+        20.0
       ]
     },
     {
-      "id": 28,
+      "id": 1,
       "pin_index": 7,
       "point": [
-        -40.0,
+        420.0000006160264,
         -100.0,
-        92.7633743286133
+        20.0
       ]
     },
     {
-      "id": 28,
+      "id": 1,
       "pin_index": 8,
       "point": [
-        -70.0,
-        -100.0,
-        92.7633743286133
+        419.9999999089196,
+        -69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 29,
+      "id": 2,
+      "pin_index": 0,
+      "point": [
+        480.00000009108044,
+        -80.00000009108041,
+        80.55054473876953
+      ]
+    },
+    {
+      "id": 2,
+      "pin_index": 1,
+      "point": [
+        479.99999938397366,
+        -50.00000000000001,
+        80.55054473876953
+      ]
+    },
+    {
+      "id": 2,
+      "pin_index": 3,
+      "point": [
+        450.0,
+        -79.99999938397363,
+        80.55054473876953
+      ]
+    },
+    {
+      "id": 2,
+      "pin_index": 4,
+      "point": [
+        450.0,
+        -50.00000000000001,
+        80.55054473876953
+      ]
+    },
+    {
+      "id": 2,
+      "pin_index": 5,
+      "point": [
+        450.0,
+        -20.000000616026377,
+        80.55054473876953
+      ]
+    },
+    {
+      "id": 2,
+      "pin_index": 6,
+      "point": [
+        419.9999999089196,
+        -80.00000009108041,
+        80.55054473876953
+      ]
+    },
+    {
+      "id": 2,
+      "pin_index": 7,
+      "point": [
+        420.0000006160264,
+        -50.00000000000001,
+        80.55054473876953
+      ]
+    },
+    {
+      "id": 2,
+      "pin_index": 8,
+      "point": [
+        419.9999999089196,
+        -19.999999908919598,
+        80.55054473876953
+      ]
+    },
+    {
+      "id": 3,
+      "pin_index": 3,
+      "point": [
+        450.0,
+        -29.999999383973638,
+        81.47573089599607
+      ]
+    },
+    {
+      "id": 3,
+      "pin_index": 4,
+      "point": [
+        450.0,
+        -6.9276484498839475e-15,
+        81.47573089599607
+      ]
+    },
+    {
+      "id": 3,
+      "pin_index": 5,
+      "point": [
+        450.0,
+        29.999999383973623,
+        81.47573089599607
+      ]
+    },
+    {
+      "id": 3,
+      "pin_index": 6,
+      "point": [
+        419.9999999089196,
+        -30.000000091080416,
+        81.47573089599607
+      ]
+    },
+    {
+      "id": 3,
+      "pin_index": 7,
+      "point": [
+        420.0000006160264,
+        -6.214970127630209e-15,
+        81.47573089599607
+      ]
+    },
+    {
+      "id": 3,
+      "pin_index": 8,
+      "point": [
+        419.9999999089196,
+        30.000000091080402,
+        81.47573089599607
+      ]
+    },
+    {
+      "id": 4,
+      "pin_index": 1,
+      "point": [
+        479.99999938397366,
+        49.99999999999999,
+        79.49767303466797
+      ]
+    },
+    {
+      "id": 4,
       "pin_index": 2,
       "point": [
-        -70.0,
-        -30.0,
-        92.84046936035156
+        480.00000009108044,
+        80.00000009108041,
+        79.49767303466797
       ]
     },
     {
-      "id": 29,
+      "id": 4,
+      "pin_index": 3,
+      "point": [
+        450.0,
+        20.000000616026362,
+        79.49767303466797
+      ]
+    },
+    {
+      "id": 4,
+      "pin_index": 4,
+      "point": [
+        450.0,
+        49.99999999999999,
+        79.49767303466797
+      ]
+    },
+    {
+      "id": 4,
       "pin_index": 5,
       "point": [
-        -70.0,
-        -60.0,
-        92.84046936035156
+        450.0,
+        79.99999938397363,
+        79.49767303466797
       ]
     },
     {
-      "id": 29,
+      "id": 4,
       "pin_index": 6,
       "point": [
-        -10.0,
-        -90.0,
-        92.84046936035156
+        419.9999999089196,
+        19.999999908919584,
+        79.49767303466797
       ]
     },
     {
-      "id": 29,
+      "id": 4,
       "pin_index": 7,
       "point": [
-        -40.0,
-        -90.0,
-        92.84046936035156
+        420.0000006160264,
+        49.99999999999999,
+        79.49767303466797
       ]
     },
     {
-      "id": 29,
+      "id": 4,
       "pin_index": 8,
       "point": [
-        -70.0,
-        -90.0,
-        92.84046936035156
+        419.9999999089196,
+        80.00000009108041,
+        79.49767303466797
       ]
     },
     {
-      "id": 30,
-      "pin_index": 5,
+      "id": 5,
+      "pin_index": 0,
       "point": [
-        -70.0,
-        -50.0,
-        93.32263946533202
+        480.00000009108044,
+        69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 30,
-      "pin_index": 7,
+      "id": 5,
+      "pin_index": 1,
       "point": [
-        -40.0,
-        -80.0,
-        93.32263946533202
+        479.99999938397366,
+        99.99999999999999,
+        20.0
       ]
     },
     {
-      "id": 30,
-      "pin_index": 8,
-      "point": [
-        -70.0,
-        -80.0,
-        93.32263946533202
-      ]
-    },
-    {
-      "id": 31,
+      "id": 5,
       "pin_index": 2,
       "point": [
-        -70.0,
-        50.0,
-        95.0267562866211
+        480.00000009108044,
+        130.0000000910804,
+        20.0
       ]
     },
     {
-      "id": 32,
+      "id": 5,
+      "pin_index": 3,
+      "point": [
+        450.0,
+        70.00000061602637,
+        20.0
+      ]
+    },
+    {
+      "id": 5,
+      "pin_index": 4,
+      "point": [
+        450.0,
+        100.0,
+        20.0
+      ]
+    },
+    {
+      "id": 5,
+      "pin_index": 5,
+      "point": [
+        450.0,
+        129.99999938397363,
+        20.0
+      ]
+    },
+    {
+      "id": 5,
+      "pin_index": 6,
+      "point": [
+        419.9999999089196,
+        69.99999990891959,
+        20.0
+      ]
+    },
+    {
+      "id": 5,
+      "pin_index": 7,
+      "point": [
+        420.0000006160264,
+        100.0,
+        20.0
+      ]
+    },
+    {
+      "id": 5,
+      "pin_index": 8,
+      "point": [
+        419.9999999089196,
+        130.0000000910804,
+        20.0
+      ]
+    },
+    {
+      "id": 6,
+      "pin_index": 0,
+      "point": [
+        530.0000000910804,
+        -130.0000000910804,
+        20.0
+      ]
+    },
+    {
+      "id": 6,
+      "pin_index": 1,
+      "point": [
+        529.9999993839737,
+        -100.00000000000001,
+        20.0
+      ]
+    },
+    {
+      "id": 6,
       "pin_index": 2,
       "point": [
-        -70.0,
-        60.0,
-        96.1009750366211
+        530.0000000910804,
+        -69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 32,
+      "id": 6,
+      "pin_index": 3,
+      "point": [
+        500.0,
+        -129.99999938397363,
+        20.0
+      ]
+    },
+    {
+      "id": 6,
+      "pin_index": 4,
+      "point": [
+        500.0,
+        -100.0,
+        20.0
+      ]
+    },
+    {
+      "id": 6,
       "pin_index": 5,
       "point": [
-        -70.0,
-        30.0,
-        96.1009750366211
+        500.0,
+        -70.00000061602637,
+        20.0
       ]
     },
     {
-      "id": 33,
+      "id": 6,
+      "pin_index": 6,
+      "point": [
+        469.9999999089196,
+        -130.0000000910804,
+        20.0
+      ]
+    },
+    {
+      "id": 6,
+      "pin_index": 7,
+      "point": [
+        470.0000006160264,
+        -100.0,
+        20.0
+      ]
+    },
+    {
+      "id": 6,
+      "pin_index": 8,
+      "point": [
+        469.9999999089196,
+        -69.99999990891959,
+        20.0
+      ]
+    },
+    {
+      "id": 7,
+      "pin_index": 0,
+      "point": [
+        530.0000000910804,
+        -80.00000009108041,
+        83.3570556640625
+      ]
+    },
+    {
+      "id": 7,
+      "pin_index": 1,
+      "point": [
+        529.9999993839737,
+        -50.00000000000001,
+        83.3570556640625
+      ]
+    },
+    {
+      "id": 7,
+      "pin_index": 3,
+      "point": [
+        500.0,
+        -79.99999938397363,
+        83.3570556640625
+      ]
+    },
+    {
+      "id": 7,
+      "pin_index": 4,
+      "point": [
+        500.0,
+        -50.00000000000001,
+        83.3570556640625
+      ]
+    },
+    {
+      "id": 7,
+      "pin_index": 6,
+      "point": [
+        469.9999999089196,
+        -80.00000009108041,
+        83.3570556640625
+      ]
+    },
+    {
+      "id": 7,
+      "pin_index": 7,
+      "point": [
+        470.0000006160264,
+        -50.00000000000001,
+        83.3570556640625
+      ]
+    },
+    {
+      "id": 8,
       "pin_index": 2,
       "point": [
-        -70.0,
-        70.0,
-        95.99000549316406
+        530.0000000910804,
+        30.000000091080402,
+        80.04591369628903
       ]
     },
     {
-      "id": 33,
-      "pin_index": 5,
-      "point": [
-        -70.0,
-        40.0,
-        95.99000549316406
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 8,
-      "point": [
-        -70.0,
-        10.0,
-        95.99000549316406
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 0,
-      "point": [
-        -10.0,
-        140.0,
-        71.09392547607422
-      ]
-    },
-    {
-      "id": 34,
+      "id": 9,
       "pin_index": 1,
       "point": [
-        -40.0,
-        140.0,
-        71.09392547607422
+        529.9999993839737,
+        49.99999999999999,
+        84.30660247802734
       ]
     },
     {
-      "id": 34,
+      "id": 9,
       "pin_index": 2,
       "point": [
-        -70.0,
-        140.0,
-        71.09392547607422
+        530.0000000910804,
+        80.00000009108041,
+        84.30660247802734
       ]
     },
     {
-      "id": 34,
-      "pin_index": 3,
-      "point": [
-        -10.0,
-        110.0,
-        71.09392547607422
-      ]
-    },
-    {
-      "id": 34,
+      "id": 9,
       "pin_index": 4,
       "point": [
-        -40.0,
-        110.0,
-        71.09392547607422
+        500.0,
+        49.99999999999999,
+        84.30660247802734
       ]
     },
     {
-      "id": 34,
+      "id": 9,
       "pin_index": 5,
       "point": [
-        -70.0,
-        110.0,
-        71.09392547607422
+        500.0,
+        79.99999938397363,
+        84.30660247802734
       ]
     },
     {
-      "id": 34,
+      "id": 9,
       "pin_index": 7,
       "point": [
-        -40.0,
-        80.0,
-        71.09392547607422
+        470.0000006160264,
+        49.99999999999999,
+        84.30660247802734
       ]
     },
     {
-      "id": 34,
+      "id": 9,
       "pin_index": 8,
       "point": [
-        -70.0,
-        80.0,
-        71.09392547607422
+        469.9999999089196,
+        80.00000009108041,
+        84.30660247802734
       ]
     },
     {
-      "id": 37,
-      "pin_index": 5,
+      "id": 10,
+      "pin_index": 0,
       "point": [
-        -60.0,
-        -70.0,
-        92.69853210449217
+        530.0000000910804,
+        69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 37,
-      "pin_index": 6,
+      "id": 10,
+      "pin_index": 1,
       "point": [
-        0.0,
-        -100.0,
-        92.69853210449217
+        529.9999993839737,
+        99.99999999999999,
+        20.0
       ]
     },
     {
-      "id": 37,
-      "pin_index": 7,
-      "point": [
-        -30.0,
-        -100.0,
-        92.69853210449217
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 8,
-      "point": [
-        -60.0,
-        -100.0,
-        92.69853210449217
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 5,
-      "point": [
-        -60.0,
-        -60.0,
-        93.96236419677734
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 6,
-      "point": [
-        0.0,
-        -90.0,
-        93.96236419677734
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 7,
-      "point": [
-        -30.0,
-        -90.0,
-        93.96236419677734
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 8,
-      "point": [
-        -60.0,
-        -90.0,
-        93.96236419677734
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 5,
-      "point": [
-        -60.0,
-        -50.0,
-        95.2347183227539
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 7,
-      "point": [
-        -30.0,
-        -80.0,
-        95.2347183227539
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 8,
-      "point": [
-        -60.0,
-        -80.0,
-        95.2347183227539
-      ]
-    },
-    {
-      "id": 40,
+      "id": 10,
       "pin_index": 2,
       "point": [
-        -60.0,
-        50.0,
-        109.16873168945312
+        530.0000000910804,
+        130.0000000910804,
+        20.0
       ]
     },
     {
-      "id": 41,
-      "pin_index": 0,
-      "point": [
-        0.0,
-        60.0,
-        125.54795837402345
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 1,
-      "point": [
-        -30.0,
-        60.0,
-        125.54795837402345
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 2,
-      "point": [
-        -60.0,
-        60.0,
-        125.54795837402345
-      ]
-    },
-    {
-      "id": 41,
+      "id": 10,
       "pin_index": 3,
       "point": [
-        0.0,
-        30.0,
-        125.54795837402345
+        500.0,
+        70.00000061602637,
+        20.0
       ]
     },
     {
-      "id": 41,
+      "id": 10,
+      "pin_index": 4,
+      "point": [
+        500.0,
+        100.0,
+        20.0
+      ]
+    },
+    {
+      "id": 10,
       "pin_index": 5,
       "point": [
-        -60.0,
-        30.0,
-        125.54795837402345
+        500.0,
+        129.99999938397363,
+        20.0
       ]
     },
     {
-      "id": 41,
+      "id": 10,
+      "pin_index": 6,
+      "point": [
+        469.9999999089196,
+        69.99999990891959,
+        20.0
+      ]
+    },
+    {
+      "id": 10,
+      "pin_index": 7,
+      "point": [
+        470.0000006160264,
+        100.0,
+        20.0
+      ]
+    },
+    {
+      "id": 10,
       "pin_index": 8,
       "point": [
-        -60.0,
-        0.0,
-        125.54795837402345
+        469.9999999089196,
+        130.0000000910804,
+        20.0
       ]
     },
     {
-      "id": 42,
+      "id": 11,
       "pin_index": 0,
       "point": [
-        0.0,
-        70.0,
-        121.71240234375001
+        580.0000000910804,
+        -130.0000000910804,
+        20.0
       ]
     },
     {
-      "id": 42,
+      "id": 11,
       "pin_index": 1,
       "point": [
-        -30.0,
-        70.0,
-        121.71240234375001
+        579.9999993839737,
+        -100.00000000000001,
+        20.0
       ]
     },
     {
-      "id": 42,
+      "id": 11,
       "pin_index": 2,
       "point": [
-        -60.0,
-        70.0,
-        121.71240234375001
+        580.0000000910804,
+        -69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 42,
+      "id": 11,
+      "pin_index": 3,
+      "point": [
+        550.0,
+        -129.99999938397363,
+        20.0
+      ]
+    },
+    {
+      "id": 11,
+      "pin_index": 4,
+      "point": [
+        550.0,
+        -100.0,
+        20.0
+      ]
+    },
+    {
+      "id": 11,
       "pin_index": 5,
       "point": [
-        -60.0,
-        40.0,
-        121.71240234375001
+        550.0,
+        -70.00000061602637,
+        20.0
       ]
     },
     {
-      "id": 42,
+      "id": 11,
+      "pin_index": 6,
+      "point": [
+        519.9999999089196,
+        -130.0000000910804,
+        20.0
+      ]
+    },
+    {
+      "id": 11,
+      "pin_index": 7,
+      "point": [
+        520.0000006160263,
+        -100.0,
+        20.0
+      ]
+    },
+    {
+      "id": 11,
       "pin_index": 8,
       "point": [
-        -60.0,
-        10.0,
-        121.71240234375001
+        519.9999999089196,
+        -69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 43,
+      "id": 12,
       "pin_index": 0,
       "point": [
-        0.0,
-        140.0,
-        72.52337646484375
+        580.0000000910804,
+        -80.00000009108041,
+        82.2878189086914
       ]
     },
     {
-      "id": 43,
+      "id": 12,
       "pin_index": 1,
       "point": [
-        -30.0,
-        140.0,
-        72.52337646484375
+        579.9999993839737,
+        -50.00000000000001,
+        82.2878189086914
       ]
     },
     {
-      "id": 43,
+      "id": 12,
       "pin_index": 2,
       "point": [
-        -60.0,
-        140.0,
-        72.52337646484375
+        580.0000000910804,
+        -19.999999908919598,
+        82.2878189086914
       ]
     },
     {
-      "id": 43,
+      "id": 12,
       "pin_index": 3,
       "point": [
-        0.0,
-        110.0,
-        72.52337646484375
+        550.0,
+        -79.99999938397363,
+        82.2878189086914
       ]
     },
     {
-      "id": 43,
+      "id": 12,
       "pin_index": 4,
       "point": [
-        -30.0,
-        110.0,
-        72.52337646484375
+        550.0,
+        -50.00000000000001,
+        82.2878189086914
       ]
     },
     {
-      "id": 43,
+      "id": 12,
       "pin_index": 5,
       "point": [
-        -60.0,
-        110.0,
-        72.52337646484375
+        550.0,
+        -20.000000616026377,
+        82.2878189086914
       ]
     },
     {
-      "id": 43,
-      "pin_index": 8,
-      "point": [
-        -60.0,
-        80.0,
-        72.52337646484375
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 5,
-      "point": [
-        -50.0,
-        -70.0,
-        92.11273193359375
-      ]
-    },
-    {
-      "id": 46,
+      "id": 12,
       "pin_index": 6,
       "point": [
-        10.0,
-        -100.0,
-        92.11273193359375
+        519.9999999089196,
+        -80.00000009108041,
+        82.2878189086914
       ]
     },
     {
-      "id": 46,
+      "id": 12,
       "pin_index": 7,
       "point": [
-        -20.0,
-        -100.0,
-        92.11273193359375
+        520.0000006160263,
+        -50.00000000000001,
+        82.2878189086914
       ]
     },
     {
-      "id": 46,
-      "pin_index": 8,
-      "point": [
-        -50.0,
-        -100.0,
-        92.11273193359375
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 6,
-      "point": [
-        10.0,
-        -90.0,
-        94.11821746826172
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 7,
-      "point": [
-        -20.0,
-        -90.0,
-        94.11821746826172
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 8,
-      "point": [
-        -50.0,
-        -90.0,
-        94.11821746826172
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 6,
-      "point": [
-        10.0,
-        -80.0,
-        95.0966796875
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 7,
-      "point": [
-        -20.0,
-        -80.0,
-        95.0966796875
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 8,
-      "point": [
-        -50.0,
-        -80.0,
-        95.0966796875
-      ]
-    },
-    {
-      "id": 50,
+      "id": 13,
       "pin_index": 0,
       "point": [
-        10.0,
-        60.0,
-        126.94415283203125
+        580.0000000910804,
+        -30.000000091080416,
+        84.56877899169922
       ]
     },
     {
-      "id": 50,
+      "id": 13,
       "pin_index": 1,
       "point": [
-        -20.0,
-        60.0,
-        126.94415283203125
+        579.9999993839737,
+        -7.640326772137686e-15,
+        84.56877899169922
       ]
     },
     {
-      "id": 50,
+      "id": 13,
       "pin_index": 2,
       "point": [
-        -50.0,
-        60.0,
-        126.94415283203125
+        580.0000000910804,
+        30.000000091080402,
+        84.56877899169922
       ]
     },
     {
-      "id": 50,
+      "id": 13,
       "pin_index": 3,
       "point": [
-        10.0,
-        30.0,
-        126.94415283203125
+        550.0,
+        -29.999999383973638,
+        84.56877899169922
       ]
     },
     {
-      "id": 50,
+      "id": 13,
+      "pin_index": 4,
+      "point": [
+        550.0,
+        -6.9276484498839475e-15,
+        84.56877899169922
+      ]
+    },
+    {
+      "id": 13,
       "pin_index": 5,
       "point": [
-        -50.0,
-        30.0,
-        126.94415283203125
+        550.0,
+        29.999999383973623,
+        84.56877899169922
       ]
     },
     {
-      "id": 50,
-      "pin_index": 7,
-      "point": [
-        -20.0,
-        0.0,
-        126.94415283203125
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 8,
-      "point": [
-        -50.0,
-        0.0,
-        126.94415283203125
-      ]
-    },
-    {
-      "id": 51,
+      "id": 14,
       "pin_index": 0,
       "point": [
-        10.0,
-        70.0,
-        123.21153259277344
+        580.0000000910804,
+        19.999999908919584,
+        80.02984619140625
       ]
     },
     {
-      "id": 51,
+      "id": 14,
       "pin_index": 1,
       "point": [
-        -20.0,
-        70.0,
-        123.21153259277344
+        579.9999993839737,
+        49.99999999999999,
+        80.02984619140625
       ]
     },
     {
-      "id": 51,
+      "id": 14,
       "pin_index": 2,
       "point": [
-        -50.0,
-        70.0,
-        123.21153259277344
+        580.0000000910804,
+        80.00000009108041,
+        80.02984619140625
       ]
     },
     {
-      "id": 51,
+      "id": 14,
       "pin_index": 3,
       "point": [
-        10.0,
-        40.0,
-        123.21153259277344
+        550.0,
+        20.000000616026362,
+        80.02984619140625
       ]
     },
     {
-      "id": 51,
+      "id": 14,
+      "pin_index": 4,
+      "point": [
+        550.0,
+        49.99999999999999,
+        80.02984619140625
+      ]
+    },
+    {
+      "id": 14,
       "pin_index": 5,
       "point": [
-        -50.0,
-        40.0,
-        123.21153259277344
+        550.0,
+        79.99999938397363,
+        80.02984619140625
       ]
     },
     {
-      "id": 51,
+      "id": 14,
+      "pin_index": 7,
+      "point": [
+        520.0000006160263,
+        49.99999999999999,
+        80.02984619140625
+      ]
+    },
+    {
+      "id": 14,
       "pin_index": 8,
       "point": [
-        -50.0,
-        10.0,
-        123.21153259277344
+        519.9999999089196,
+        80.00000009108041,
+        80.02984619140625
       ]
     },
     {
-      "id": 52,
+      "id": 15,
       "pin_index": 0,
       "point": [
-        10.0,
-        140.0,
-        68.19481658935547
+        580.0000000910804,
+        69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 52,
+      "id": 15,
       "pin_index": 1,
       "point": [
-        -20.0,
-        140.0,
-        68.19481658935547
+        579.9999993839737,
+        99.99999999999999,
+        20.0
       ]
     },
     {
-      "id": 52,
+      "id": 15,
       "pin_index": 2,
       "point": [
-        -50.0,
-        140.0,
-        68.19481658935547
+        580.0000000910804,
+        130.0000000910804,
+        20.0
       ]
     },
     {
-      "id": 52,
+      "id": 15,
       "pin_index": 3,
       "point": [
-        10.0,
-        110.0,
-        68.19481658935547
+        550.0,
+        70.00000061602637,
+        20.0
       ]
     },
     {
-      "id": 52,
+      "id": 15,
       "pin_index": 4,
       "point": [
-        -20.0,
-        110.0,
-        68.19481658935547
+        550.0,
+        100.0,
+        20.0
       ]
     },
     {
-      "id": 52,
+      "id": 15,
       "pin_index": 5,
       "point": [
-        -50.0,
-        110.0,
-        68.19481658935547
+        550.0,
+        129.99999938397363,
+        20.0
       ]
     },
     {
-      "id": 52,
-      "pin_index": 8,
-      "point": [
-        -50.0,
-        80.0,
-        68.19481658935547
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 0,
-      "point": [
-        80.0,
-        -40.0,
-        89.89047241210938
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 3,
-      "point": [
-        80.0,
-        -70.0,
-        89.89047241210938
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 4,
-      "point": [
-        50.0,
-        -70.0,
-        89.89047241210938
-      ]
-    },
-    {
-      "id": 55,
+      "id": 15,
       "pin_index": 6,
       "point": [
-        80.0,
-        -100.0,
-        89.89047241210938
+        519.9999999089196,
+        69.99999990891959,
+        20.0
       ]
     },
     {
-      "id": 55,
+      "id": 15,
       "pin_index": 7,
       "point": [
-        50.0,
-        -100.0,
-        89.89047241210938
+        520.0000006160263,
+        100.0,
+        20.0
       ]
     },
     {
-      "id": 55,
+      "id": 15,
       "pin_index": 8,
       "point": [
-        20.0,
-        -100.0,
-        89.89047241210938
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 0,
-      "point": [
-        80.0,
-        -30.0,
-        90.90379333496092
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 3,
-      "point": [
-        80.0,
-        -60.0,
-        90.90379333496092
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 4,
-      "point": [
-        50.0,
-        -60.0,
-        90.90379333496092
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 6,
-      "point": [
-        80.0,
-        -90.0,
-        90.90379333496092
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 7,
-      "point": [
-        50.0,
-        -90.0,
-        90.90379333496092
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 8,
-      "point": [
-        20.0,
-        -90.0,
-        90.90379333496092
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 0,
-      "point": [
-        80.0,
-        -20.0,
-        90.82466888427733
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 3,
-      "point": [
-        80.0,
-        -50.0,
-        90.82466888427733
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 6,
-      "point": [
-        80.0,
-        -80.0,
-        90.82466888427733
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 7,
-      "point": [
-        50.0,
-        -80.0,
-        90.82466888427733
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 8,
-      "point": [
-        20.0,
-        -80.0,
-        90.82466888427733
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 0,
-      "point": [
-        80.0,
-        50.0,
-        91.8028335571289
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 3,
-      "point": [
-        80.0,
-        20.0,
-        91.8028335571289
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 6,
-      "point": [
-        80.0,
-        -10.0,
-        91.8028335571289
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 0,
-      "point": [
-        80.0,
-        60.0,
-        91.36490631103514
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 1,
-      "point": [
-        50.0,
-        60.0,
-        91.36490631103514
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 3,
-      "point": [
-        80.0,
-        30.0,
-        91.36490631103514
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 6,
-      "point": [
-        80.0,
-        0.0,
-        91.36490631103514
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 0,
-      "point": [
-        80.0,
-        70.0,
-        91.06832122802733
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 1,
-      "point": [
-        50.0,
-        70.0,
-        91.06832122802733
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 3,
-      "point": [
-        80.0,
-        40.0,
-        91.06832122802733
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 6,
-      "point": [
-        80.0,
-        10.0,
-        91.06832122802733
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 0,
-      "point": [
-        80.0,
-        140.0,
-        60.05308532714841
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 1,
-      "point": [
-        50.0,
-        140.0,
-        60.05308532714841
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 2,
-      "point": [
-        20.0,
-        140.0,
-        60.05308532714841
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 3,
-      "point": [
-        80.0,
-        110.0,
-        60.05308532714841
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 4,
-      "point": [
-        50.0,
-        110.0,
-        60.05308532714841
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 5,
-      "point": [
-        20.0,
-        110.0,
-        60.05308532714841
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 6,
-      "point": [
-        80.0,
-        80.0,
-        60.05308532714841
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 7,
-      "point": [
-        50.0,
-        80.0,
-        60.05308532714841
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 0,
-      "point": [
-        90.0,
-        -40.0,
-        87.53688812255858
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 3,
-      "point": [
-        90.0,
-        -70.0,
-        87.53688812255858
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 4,
-      "point": [
-        60.0,
-        -70.0,
-        87.53688812255858
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 6,
-      "point": [
-        90.0,
-        -100.0,
-        87.53688812255858
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 7,
-      "point": [
-        60.0,
-        -100.0,
-        87.53688812255858
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 8,
-      "point": [
-        30.0,
-        -100.0,
-        87.53688812255858
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 0,
-      "point": [
-        90.0,
-        -30.0,
-        90.12210083007814
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 3,
-      "point": [
-        90.0,
-        -60.0,
-        90.12210083007814
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 4,
-      "point": [
-        60.0,
-        -60.0,
-        90.12210083007814
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 6,
-      "point": [
-        90.0,
-        -90.0,
-        90.12210083007814
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 7,
-      "point": [
-        60.0,
-        -90.0,
-        90.12210083007814
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 8,
-      "point": [
-        30.0,
-        -90.0,
-        90.12210083007814
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 0,
-      "point": [
-        90.0,
-        -20.0,
-        91.15267181396486
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 3,
-      "point": [
-        90.0,
-        -50.0,
-        91.15267181396486
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 4,
-      "point": [
-        60.0,
-        -50.0,
-        91.15267181396486
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 6,
-      "point": [
-        90.0,
-        -80.0,
-        91.15267181396486
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 7,
-      "point": [
-        60.0,
-        -80.0,
-        91.15267181396486
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 8,
-      "point": [
-        30.0,
-        -80.0,
-        91.15267181396486
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 0,
-      "point": [
-        90.0,
-        50.0,
-        92.47709655761717
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 1,
-      "point": [
-        60.0,
-        50.0,
-        92.47709655761717
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 3,
-      "point": [
-        90.0,
-        20.0,
-        92.47709655761717
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 6,
-      "point": [
-        90.0,
-        -10.0,
-        92.47709655761717
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 0,
-      "point": [
-        90.0,
-        60.0,
-        91.34314727783203
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 1,
-      "point": [
-        60.0,
-        60.0,
-        91.34314727783203
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 3,
-      "point": [
-        90.0,
-        30.0,
-        91.34314727783203
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 6,
-      "point": [
-        90.0,
-        0.0,
-        91.34314727783203
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 0,
-      "point": [
-        90.0,
-        70.0,
-        90.75299072265626
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 1,
-      "point": [
-        60.0,
-        70.0,
-        90.75299072265626
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 3,
-      "point": [
-        90.0,
-        40.0,
-        90.75299072265626
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 6,
-      "point": [
-        90.0,
-        10.0,
-        90.75299072265626
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 0,
-      "point": [
-        100.0,
-        -40.0,
-        85.02739715576172
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 1,
-      "point": [
-        70.0,
-        -40.0,
-        85.02739715576172
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 3,
-      "point": [
-        100.0,
-        -70.0,
-        85.02739715576172
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 4,
-      "point": [
-        70.0,
-        -70.0,
-        85.02739715576172
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 6,
-      "point": [
-        100.0,
-        -100.0,
-        85.02739715576172
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 7,
-      "point": [
-        70.0,
-        -100.0,
-        85.02739715576172
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 8,
-      "point": [
-        40.0,
-        -100.0,
-        85.02739715576172
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 0,
-      "point": [
-        100.0,
-        -30.0,
-        88.40771484375001
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 1,
-      "point": [
-        70.0,
-        -30.0,
-        88.40771484375001
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 3,
-      "point": [
-        100.0,
-        -60.0,
-        88.40771484375001
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 4,
-      "point": [
-        70.0,
-        -60.0,
-        88.40771484375001
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 6,
-      "point": [
-        100.0,
-        -90.0,
-        88.40771484375001
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 7,
-      "point": [
-        70.0,
-        -90.0,
-        88.40771484375001
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 8,
-      "point": [
-        40.0,
-        -90.0,
-        88.40771484375001
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 0,
-      "point": [
-        100.0,
-        -20.0,
-        89.6157989501953
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 3,
-      "point": [
-        100.0,
-        -50.0,
-        89.6157989501953
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 4,
-      "point": [
-        70.0,
-        -50.0,
-        89.6157989501953
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 6,
-      "point": [
-        100.0,
-        -80.0,
-        89.6157989501953
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 7,
-      "point": [
-        70.0,
-        -80.0,
-        89.6157989501953
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 8,
-      "point": [
-        40.0,
-        -80.0,
-        89.6157989501953
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 0,
-      "point": [
-        100.0,
-        50.0,
-        91.37141418457031
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 1,
-      "point": [
-        70.0,
-        50.0,
-        91.37141418457031
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 3,
-      "point": [
-        100.0,
-        20.0,
-        91.37141418457031
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 4,
-      "point": [
-        70.0,
-        20.0,
-        91.37141418457031
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 6,
-      "point": [
-        100.0,
-        -10.0,
-        91.37141418457031
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 0,
-      "point": [
-        100.0,
-        60.0,
-        90.72653198242188
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 1,
-      "point": [
-        70.0,
-        60.0,
-        90.72653198242188
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 3,
-      "point": [
-        100.0,
-        30.0,
-        90.72653198242188
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 4,
-      "point": [
-        70.0,
-        30.0,
-        90.72653198242188
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 6,
-      "point": [
-        100.0,
-        0.0,
-        90.72653198242188
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 0,
-      "point": [
-        100.0,
-        70.0,
-        89.37129974365236
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 1,
-      "point": [
-        70.0,
-        70.0,
-        89.37129974365236
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 2,
-      "point": [
-        40.0,
-        70.0,
-        89.37129974365236
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 3,
-      "point": [
-        100.0,
-        40.0,
-        89.37129974365236
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 4,
-      "point": [
-        70.0,
-        40.0,
-        89.37129974365236
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 6,
-      "point": [
-        100.0,
-        10.0,
-        89.37129974365236
+        519.9999999089196,
+        130.0000000910804,
+        20.0
       ]
     }
   ],
   "ideal_unreached": [
     {
-      "id": 28,
+      "id": 8,
       "pin_index": 2,
       "type": "stl",
       "point": [
-        -70.0,
-        -40.0,
-        67.90192413330078
-      ]
-    },
-    {
-      "id": 28,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        -40.0,
-        -70.0,
-        91.16824340820312
-      ]
-    },
-    {
-      "id": 28,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -70.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 28,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -10.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 28,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -40.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 28,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -70.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -70.0,
-        -30.0,
-        90.70594024658203
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -70.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        -10.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -40.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 29,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -70.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -70.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -40.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 30,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -70.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 31,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -70.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -70.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 32,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -70.0,
+        530.0,
         30.0,
-        88.55049133300781
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -70.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -70.0,
-        40.0,
-        71.1443099975586
-      ]
-    },
-    {
-      "id": 33,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -70.0,
-        10.0,
-        95.7992935180664
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        -10.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -40.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -70.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        -10.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -40.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -70.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -40.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 34,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -70.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -60.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        0.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -30.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 37,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -60.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -60.0,
-        -60.0,
-        66.13534545898438
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        0.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -30.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 38,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -60.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -60.0,
-        -50.0,
-        91.89868927001953
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -30.0,
-        -80.0,
-        81.92105865478516
-      ]
-    },
-    {
-      "id": 39,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -60.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 40,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -60.0,
-        50.0,
-        95.45897674560547
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        0.0,
-        60.0,
-        120.19055938720703
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -30.0,
-        60.0,
-        114.42335510253906
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -60.0,
-        60.0,
-        78.85877990722656
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        0.0,
-        30.0,
-        124.73165130615234
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -60.0,
-        30.0,
-        108.75428009033203
-      ]
-    },
-    {
-      "id": 41,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -60.0,
-        0.0,
-        112.61404418945312
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        0.0,
-        70.0,
-        113.02754974365234
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -30.0,
-        70.0,
-        103.99279022216797
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -60.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -60.0,
-        40.0,
-        104.82667541503906
-      ]
-    },
-    {
-      "id": 42,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -60.0,
-        10.0,
-        110.5473403930664
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        0.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -30.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -60.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        0.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -30.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -60.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 43,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -60.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -50.0,
-        -70.0,
-        65.38526153564453
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        10.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -20.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 46,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -50.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        10.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        -20.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 47,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -50.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 6,
-      "type": "stl",
-      "point": [
-        10.0,
-        -80.0,
-        93.56150817871094
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -20.0,
-        -80.0,
-        89.51852416992188
-      ]
-    },
-    {
-      "id": 48,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -50.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        10.0,
-        60.0,
-        117.67160034179688
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -20.0,
-        60.0,
-        117.48178100585938
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -50.0,
-        60.0,
-        102.32105255126953
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        10.0,
-        30.0,
-        122.42235565185547
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -50.0,
-        30.0,
-        118.62090301513672
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 7,
-      "type": "stl",
-      "point": [
-        -20.0,
-        0.0,
-        124.1259765625
-      ]
-    },
-    {
-      "id": 50,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -50.0,
-        0.0,
-        119.90127563476562
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 0,
-      "type": "stl",
-      "point": [
-        10.0,
-        70.0,
-        110.42822265625
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        -20.0,
-        70.0,
-        110.31572723388672
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        -50.0,
-        70.0,
-        79.23828887939453
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 3,
-      "type": "stl",
-      "point": [
-        10.0,
-        40.0,
-        123.17599487304688
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 5,
-      "type": "stl",
-      "point": [
-        -50.0,
-        40.0,
-        114.99165344238281
-      ]
-    },
-    {
-      "id": 51,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        -50.0,
-        10.0,
-        119.26336669921875
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        10.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        -20.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        -50.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        10.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        -20.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        -50.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 52,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        -50.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        50.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        50.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 55,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        20.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        50.0,
-        -60.0,
-        89.77449798583984
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        50.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 56,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        20.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        50.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 57,
-      "pin_index": 8,
-      "type": "stl",
-      "point": [
-        20.0,
-        -80.0,
-        89.05946350097656
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 58,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        50.0,
-        60.0,
-        74.75296020507812
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 59,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        50.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 60,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        80.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        50.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 2,
-      "type": "ground",
-      "point": [
-        20.0,
-        140.0,
-        0.0
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        80.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        50.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 5,
-      "type": "ground",
-      "point": [
-        20.0,
-        110.0,
-        0.0
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        80.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 61,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        50.0,
-        80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        60.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        60.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 64,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        30.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        60.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        60.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 65,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        30.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        60.0,
-        -50.0,
-        85.40644073486328
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        60.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 66,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        30.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        60.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 67,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        60.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 68,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        90.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        60.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        90.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 69,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        90.0,
-        10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        70.0,
-        -40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        70.0,
-        -70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        70.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 73,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        40.0,
-        -100.0,
-        0.0
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        -30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 1,
-      "type": "stl",
-      "point": [
-        70.0,
-        -30.0,
-        84.88335418701172
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        70.0,
-        -60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        70.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 74,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        40.0,
-        -90.0,
-        0.0
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        -20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        70.0,
-        -50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 7,
-      "type": "ground",
-      "point": [
-        70.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 75,
-      "pin_index": 8,
-      "type": "ground",
-      "point": [
-        40.0,
-        -80.0,
-        0.0
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        70.0,
-        50.0,
-        0.0
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        20.0,
-        0.0
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        70.0,
-        20.0,
-        88.11327362060547
-      ]
-    },
-    {
-      "id": 76,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        -10.0,
-        0.0
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        70.0,
-        60.0,
-        0.0
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        30.0,
-        0.0
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 4,
-      "type": "stl",
-      "point": [
-        70.0,
-        30.0,
-        77.38851165771484
-      ]
-    },
-    {
-      "id": 77,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 0,
-      "type": "ground",
-      "point": [
-        100.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 1,
-      "type": "ground",
-      "point": [
-        70.0,
-        70.0,
-        0.0
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 2,
-      "type": "stl",
-      "point": [
-        40.0,
-        70.0,
-        75.40682220458984
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 3,
-      "type": "ground",
-      "point": [
-        100.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 4,
-      "type": "ground",
-      "point": [
-        70.0,
-        40.0,
-        0.0
-      ]
-    },
-    {
-      "id": 78,
-      "pin_index": 6,
-      "type": "ground",
-      "point": [
-        100.0,
-        10.0,
-        0.0
+        75.44728088378906
       ]
     }
   ]

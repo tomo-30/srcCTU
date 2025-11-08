@@ -93,7 +93,7 @@ class PinArtGUI(QtWidgets.QWidget):
         self.cz=QtWidgets.QDoubleSpinBox(); self.cz.setRange(-10000,10000); self.cz.setDecimals(3); self.cz.setValue(50.0)
         self.cr=QtWidgets.QDoubleSpinBox(); self.cr.setRange(-180,180); self.cr.setDecimals(3); self.cr.setValue(0.0)
         self.cp=QtWidgets.QDoubleSpinBox(); self.cp.setRange(-180,180); self.cp.setDecimals(3); self.cp.setValue(0.0)
-        self.cw=QtWidgets.QDoubleSpinBox(); self.cw.setRange(-180,180); self.cw.setDecimals(3); self.cw.setValue(0.0)
+        self.cw=QtWidgets.QDoubleSpinBox(); self.cw.setRange(-180,180); self.cw.setDecimals(3); self.cw.setValue(135.0)
         form.addRow("中心X [mm]", self.cx)
         form.addRow("中心Y [mm]", self.cy)
         form.addRow("中心Z [mm]", self.cz)
@@ -161,28 +161,36 @@ class PinArtGUI(QtWidgets.QWidget):
         blue = (blue_local@R.T)+c
         ax.plot(blue[:,0], blue[:,1], blue[:,2], color='blue')
 
-        # --- 各ピンを円柱メッシュで描画（緑） ---
-        all_pts = [gray, blue]  # 等比設定のために点群を集計
-        for base in pins:
+        # === ラベル用の基底・オフセットを準備（すべてのピンで共通） ===
+        M_label = orthonormal_basis_from_dir(dirw)        # 列: [i, j, k=dirw]
+        label_offset = (M_label[:,0] + M_label[:,1]) * (r*1.2) + dirw * (L*0.05)
+
+        # --- 各ピンを円柱メッシュで描画（緑） + ラベリング ---
+        all_pts = [gray, blue]
+        for idx, base in enumerate(pins, start=1):
             X,Y,Z = cylinder_mesh(base, dirw, r, L, n_theta=36, n_z=6)
             ax.plot_surface(X, Y, Z, color='green', linewidth=0, antialiased=False, shade=True)
-            # 端面（任意）：見た目向上のための丸板
-            # 上面
+
+            # 端面（見た目向上の丸板）
             M = orthonormal_basis_from_dir(dirw)
             theta = np.linspace(0, 2*np.pi, 36, endpoint=True)
-            circ_local = np.stack([r*np.cos(theta), r*np.sin(theta), np.full_like(theta, L)], axis=0)  # (3, n)
+            circ_local = np.stack([r*np.cos(theta), r*np.sin(theta), np.full_like(theta, L)], axis=0)
             circ_world = (M @ circ_local).T + base
             poly_top = Poly3DCollection([circ_world], facecolors='green', edgecolors='none', alpha=1.0)
             ax.add_collection3d(poly_top)
-            # 下面
             circ_local2 = np.stack([r*np.cos(theta), r*np.sin(theta), np.zeros_like(theta)], axis=0)
             circ_world2 = (M @ circ_local2).T + base
             poly_bot = Poly3DCollection([circ_world2], facecolors='green', edgecolors='none', alpha=1.0)
             ax.add_collection3d(poly_bot)
 
+            # === ここでラベルを配置 ===
+            lp = base + label_offset
+            ax.text(lp[0], lp[1], lp[2], f"p{idx}",
+                    fontsize=9, color='black', ha='center', va='center',
+                    bbox=dict(boxstyle='round,pad=0.2', fc='white', ec='none', alpha=0.6))
+
             all_pts.append(np.column_stack([X.ravel(), Y.ravel(), Z.ravel()]))
 
-        # 軸ラベルと等比
         ax.set_xlabel('X [mm]'); ax.set_ylabel('Y [mm]'); ax.set_zlabel('Z [mm]')
         all_pts = np.vstack(all_pts)
         set_equal_3d(ax, all_pts)

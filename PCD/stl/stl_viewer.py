@@ -5,19 +5,41 @@
 #  - 視点リセットボタン: ZY平面を正面, XY平面を水平にする(= +X方向から俯瞰)
 #  - バウンディングボックス表示トグル: AABB(軸平行)のワイヤ枠, 寸法表示, 底面中心の赤丸(基準点)表示/非表示
 #  - 重いSTLに対して自動デシメーション(削減率指定)
+#  - 高さ(z)で緑グラデーション表示
 
 import os
 import sys
 import pyvista as pv
 from pyvistaqt import QtInteractor
 from PyQt5 import QtWidgets, QtCore, QtGui
+from matplotlib.colors import ListedColormap
+from matplotlib.colors import LinearSegmentedColormap
+
+
 
 # ===== ユーザ設定 =====
-STL_NAME = "pumpkin1_printout.stl"     # 同ディレクトリのSTL名
+STL_NAME = "pumpkin_down_on_desk(500-0-67_1-180-0-90).stl"     # 同ディレクトリのSTL名
 FACE_THRESHOLD = 100_000      # この面数を超えたらデシメーション実施
 TARGET_REDUCTION = 0.90       # デシメーション削減率(0.90=90%削減)
 WINDOW_SIZE = (1200, 800)
 # =====================
+
+def make_green_cmap():
+    """
+    高さを2色(明→暗)で連続的に変化させるカラーマップを作る．
+    0.0: 明るい緑, 1.0: 暗い緑
+    """
+    # 低いところの色(明るい)
+    low = (0xA8/255, 0xE6/255, 0xA1/255)   # #a8e6a1
+    # 高いところの色(暗い)
+    high = (0x00/255, 0x42/255, 0x25/255)  # #004225
+
+    cmap = LinearSegmentedColormap.from_list(
+        "green_height",
+        [low, high],
+        N=256,   # ← ここで連続にしておく
+    )
+    return cmap
 
 
 class STLViewer(QtWidgets.QMainWindow):
@@ -62,7 +84,7 @@ class STLViewer(QtWidgets.QMainWindow):
         self.chk_bbox.stateChanged.connect(self.on_bbox_toggled)
         side_layout.addWidget(self.chk_bbox)
 
-        # 寸法表示用テキスト(画面外でも確認できるようGUI側にも表示)
+        # 寸法表示用テキスト
         self.dim_text = QtWidgets.QTextEdit(self)
         self.dim_text.setReadOnly(True)
         self.dim_text.setPlaceholderText("バウンディングボックス情報を表示する．")
@@ -97,24 +119,51 @@ class STLViewer(QtWidgets.QMainWindow):
             mesh = mesh.decimate(target_reduction=TARGET_REDUCTION)
             decimated = True
 
+        # ----- 高さスカラーを仕込む -----
+        z = mesh.points[:, 2]
+        mesh["z_height"] = z
+        zmin = float(z.min())
+        zmax = float(z.max())
+        if zmax == zmin:
+            zmax = zmin + 1e-6  # 全部同じ高さのときの保険
+
+        # 2色から作った連続カラーマップ（明→暗）
+        green_cmap = make_green_cmap()
+
         self.mesh = mesh
 
-        # 3Dシーン初期化
-        self.plotter.clear()  # 念のため
-        self.plotter.add_mesh(self.mesh, show_edges=False, smooth_shading=True)
+        # ----- 描画 -----
+        self.plotter.clear()
+        self.plotter.add_mesh(
+            self.mesh,
+            scalars="z_height",
+            cmap=green_cmap,
+            show_edges=False,
+            smooth_shading=True,
+            clim=(zmin, zmax),          # 値の範囲をzに固定
+            nan_color=(0, 0.25, 0.15),  # 欠損でも暗めの緑
+            above_color=(0, 0.25, 0.15),
+            below_color=(0.66, 0.9, 0.63),
+            n_colors=256,               # ← ここが大事：細かく刻む
+            scalar_bar_args={"title": "Height (Z)"},
+        )
+
+        # 軸・グリッド
         self.plotter.add_axes()
         self.plotter.show_grid()
-        self.reset_view()  # 初期視点
+        self.reset_view()
 
-        # 情報ラベル更新
+        # 情報ラベル
         info_lines = [
             f"PyVista: {pv.__version__}",
             f"ファイル: {STL_NAME}",
             f"Faces(before): {n_faces:,} / Points(before): {n_pts:,}",
             f"Decimated: {'Yes' if decimated else 'No'}",
             f"Faces(now): {self.mesh.n_cells:,} / Points(now): {self.mesh.n_points:,}",
+            f"Z range: {zmin:.3f} ～ {zmax:.3f}",
         ]
         self.info_label.setText("\n".join(info_lines))
+
 
     # ---------- 視点リセット ----------
     def reset_view(self):
