@@ -1,0 +1,91 @@
+{
+  "units": {
+    "length": "mm",
+    "angle": "deg",
+    "rpy_order": "XYZ"
+  },
+  "world": {
+    "robot_base": {
+      "size_xyz": [
+        900.0,
+        700.0,
+        500.0
+      ],
+      "anchor": "-Z面中心(下面)",
+      "pose_world": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy_deg": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "robot_frame_mounts": {
+    "pin_art_module": {
+      "size_xyz": [
+        350.0,
+        350.0,
+        300.0
+      ],
+      "anchor": "-Z面中心(下面)",
+      "mount_pose_robot": {
+        "position": [
+          300.0,
+          0.0,
+          0.0
+        ],
+        "rpy_deg": [
+          0.0,
+          0.0,
+          90.0
+        ]
+      }
+    },
+    "harvest_module": {
+      "size_xyz": [
+        300.0,
+        300.0,
+        300.0
+      ],
+      "anchor": "-Z面中心(下面)",
+      "mount_pose_robot": {
+        "position": [
+          -300.0,
+          0.0,
+          500.0
+        ],
+        "rpy_deg": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "storage": {
+      "size_xyz": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "anchor": "-Z面中心(下面)",
+      "mount_pose_robot": {
+        "position": [
+          0.0,
+          0.0,
+          500.0
+        ],
+        "rpy_deg": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  }
+}

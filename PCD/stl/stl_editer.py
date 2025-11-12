@@ -14,7 +14,7 @@ import pyvista as pv
 from pyvistaqt import QtInteractor
 from PyQt5 import QtWidgets, QtCore, QtGui
 
-STL_NAME = "pumpkin_down_on_desk(500-0-67_1-180-0--90).stl"
+STL_NAME = "pumpkin1(170_200_150).stl"
 FACE_THRESHOLD = 100_000
 TARGET_REDUCTION = 0.90
 WINDOW_SIZE = (1200, 820)

@@ -18,7 +18,7 @@ from matplotlib.colors import LinearSegmentedColormap
 
 
 # ===== ユーザ設定 =====
-STL_NAME = "pumpkin_down_on_desk(500-0-67_1-180-0-90).stl"     # 同ディレクトリのSTL名
+STL_NAME = "pumpkin1(170_200_150).stl"     # 同ディレクトリのSTL名
 FACE_THRESHOLD = 100_000      # この面数を超えたらデシメーション実施
 TARGET_REDUCTION = 0.90       # デシメーション削減率(0.90=90%削減)
 WINDOW_SIZE = (1200, 800)
